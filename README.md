@@ -1,3 +1,1 @@
-GRUPO # 14
-Cadena Jeremy
-Tipan Dylan
+GRUPO # 14 - Cadena Jeremy - Tipan Dylan
