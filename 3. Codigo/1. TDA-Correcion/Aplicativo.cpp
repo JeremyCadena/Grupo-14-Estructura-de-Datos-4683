@@ -3,7 +3,7 @@
 
 /* 		UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
 
-Programa para 
+Programa para la correcion de un TDA
 Autor(es): Cadena Jeremy - Dylan Tipan
 Fecha de creación: 11/05/2022
 Fecha de modificación: 12/05/2022

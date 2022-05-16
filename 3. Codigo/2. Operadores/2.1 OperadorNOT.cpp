@@ -2,6 +2,18 @@
 
 using namespace std;
 
+/* 		UNIVERSIDAD DE LAS FUERZAS ARMADAS ESPE
+
+Programa para sobrecargar el operador negacion (!)
+Autor(es): Cadena Jeremy - Dylan Tipan
+Fecha de creación: 14/05/2022
+Fecha de modificación: 15/05/2022
+Grupo # 14
+Github del grupo: https://github.com/JeremyCadena/Grupo-14-Estructura-de-Datos-4683.git
+Versión:
+Estructura de Datos 4683 */
+
+
 //Clase de Vector en Plano 2D
 class V2D {   
   float x, y;
