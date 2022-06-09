@@ -1,5 +1,6 @@
 #include<stdlib.h>
 #include "ListaCircular.cpp"
+#include "marquesina.h"
 #define USER "admin"
 #define PASS "admin123"
 
@@ -36,13 +37,16 @@ int main(int argc, char** argv) {
 	}else{
 		cout << "\n\tBienvenido al sistema" <<endl;
 		cin.get();
+		Marquesina marquesina("Registro de vehiculos de una mecanica");
 		menu();
+		marquesina.iniciar();
 	}
 	
 	return 0;
 }
 
 void menu(){
+	
 	int sw=0,validandoL;
 	int convertir;
 	char opcion[2]; // lo declaro como char para hacer la validacion de que solo ingrese numeros usando strlen

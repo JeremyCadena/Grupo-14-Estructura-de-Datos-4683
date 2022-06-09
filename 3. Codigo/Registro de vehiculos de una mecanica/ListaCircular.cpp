@@ -14,9 +14,9 @@ ListaCircular::ListaCircular(){
 
 void ListaCircular::agregar(){
     ofstream apArchivo;  
-    apArchivo.open("C:/Users/jejoc/OneDrive/Escritorio/Jeremy  ESPE/Software/Semestre SI MAY-SEP22/1. Estructura de Datos/Trabajos en C++/Registro de vehiculos de una mecanica/Registro.txt", ios::app);
+    apArchivo.open("Registro.txt", ios::app);
     if ( ! apArchivo ) {
-        cout << "Problema al abrir archivo --> Registro.txt" <<endl;
+        cout << "\nProblema al abrir archivo --> Registro.txt" <<endl;
         return;
     }
 
@@ -24,11 +24,11 @@ void ListaCircular::agregar(){
     int i=0;
     nuevo = new Vehiculo();
     if(nuevo==NULL){
-        cout<<"\t\t\tNO HAY MEMORIA SUFICIENTE"<<endl;
+        cout<<"\n\t\t\tNO HAY MEMORIA SUFICIENTE"<<endl;
 		return;
 	}
 
-    cout<<"\t\t\t|Registro del Vehiculo|"<<endl;
+    cout<<"\n\t\t\t|Registro del Vehiculo|"<<endl;
 	cout<<"\t\t\t-----------------------"<<endl;
 	cout<<endl;
 
@@ -64,11 +64,11 @@ void ListaCircular::agregar(){
 		raiz->siguiente->anterior=nuevo;
 		raiz->siguiente=nuevo;		
 	}
-	cout<<"\t\tRegistro de Vehiculo exitoso!"<<endl;
+	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
 
 	Vehiculo *copia=raiz;	
 	// Imprimir la lista
-	apArchivo << "\t\t\t----------------------------" << endl;
+	apArchivo << "\n\t\t\t----------------------------" << endl;
 	apArchivo << "\t\t\t|     Lista de Registros    |" << endl;
 	apArchivo << "\t\t\t----------------------------" << endl;
 	do {
@@ -98,7 +98,7 @@ void ListaCircular::consultarPrimero(){
 		return;
 	}
 
-    cout << "\t\t\t--------------------------" << endl;
+    cout << "\n\t\t\t--------------------------" << endl;
 	cout << "\t\t\t|      Registros         |" << endl;
 	cout << "\t\t\t--------------------------" << endl;
 
@@ -121,7 +121,7 @@ void ListaCircular::consultarUltimo(){
 		return;
 	}
 
-    cout << "\t\t\t--------------------------" << endl;
+    cout << "\n\t\t\t--------------------------" << endl;
 	cout << "\t\t\t|      Registros         |" << endl;
 	cout << "\t\t\t--------------------------" << endl;
 
@@ -146,7 +146,7 @@ void ListaCircular::borrar(){
 	}
 
     if ( raiz == raiz->siguiente) {
-	cout << "\t\t\t------------------------------" << endl;
+	cout << "\n\t\t\t------------------------------" << endl;
 	cout << "\t\t\t|   Eliminacion de registro   |" << endl;
 	cout << "\t\t\t------------------------------" << endl;
 	cout<<"\n\n";	
@@ -201,7 +201,7 @@ void ListaCircular::buscar(){
 			char marca[12];
 			char resp; 
 			do{
-                cout << "\t\t\t--------------------------" << endl;
+                cout << "\n\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tMarca: ";
@@ -228,7 +228,7 @@ void ListaCircular::buscar(){
 		case 2:	
 			char placaVehicular[10];
 			do{
-				cout << "\t\t\t--------------------------" << endl;
+				cout << "\n\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tPlaca vehicular: ";
@@ -253,7 +253,7 @@ void ListaCircular::buscar(){
 		case 3:	
 			char nombrePropietario[40];
 			do{
-				cout << "\t\t\t--------------------------" << endl;
+				cout << "\n\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tPropietario: ";
