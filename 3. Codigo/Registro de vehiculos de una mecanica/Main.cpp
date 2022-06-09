@@ -1,11 +1,49 @@
 #include<stdlib.h>
 #include "ListaCircular.cpp"
+#define USER "admin"
+#define PASS "admin123"
 
 using namespace std;
+void menu();
 
 int main(int argc, char** argv) {
-	   
-    int sw=0,validandoL;
+	string usuario;   
+	string password;
+	int k=0;
+	bool ingresa = false;
+
+	do
+	{
+		system("cls");
+		cout<<"\t\t|        Login de Usuario        |"<<endl;
+		cout<<"\t\t----------------------------------"<<endl;
+		cout << "\n\tUsuario: ";
+		getline(cin, usuario);
+		cout << "\n\tPassword: ";
+		getline(cin, password);
+		if(usuario==USER && password==PASS){
+			ingresa = true;
+		}else{
+			cout << "\n\tEl usuario y/o contraseña son incorrectos"<<endl;
+			cin.get();
+			k++;
+		}	
+	} while (ingresa == false && k <3);
+
+	if(ingresa==false){
+		cout << "Usted ha fallado todos los intentos de ingreso al programa" <<endl;
+		cin.get();
+	}else{
+		cout << "\n\tBienvenido al sistema" <<endl;
+		cin.get();
+		menu();
+	}
+	
+	return 0;
+}
+
+void menu(){
+	int sw=0,validandoL;
 	int convertir;
 	char opcion[2]; // lo declaro como char para hacer la validacion de que solo ingrese numeros usando strlen
     ListaCircular lst;
@@ -64,5 +102,5 @@ int main(int argc, char** argv) {
 	    }
 	    system("pause");
 	}while(convertir!=0);
-	return 0;	
+	return;
 }
