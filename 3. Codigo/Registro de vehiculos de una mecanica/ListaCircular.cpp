@@ -65,6 +65,23 @@ void ListaCircular::agregar(){
 		raiz->siguiente=nuevo;		
 	}
 	cout<<"\t\tRegistro de Vehiculo exitoso!"<<endl;
+
+	Vehiculo *copia=raiz;	
+	// Imprimir la lista
+	apArchivo << "\t\t\t----------------------------" << endl;
+	apArchivo << "\t\t\t|     Lista de Registros    |" << endl;
+	apArchivo << "\t\t\t----------------------------" << endl;
+	do {
+		apArchivo<<endl;	
+		apArchivo<<"\t\t--------------------------------------------"<<endl;
+		apArchivo<<"\t\tMarca: "<<copia->marca<<endl;
+		apArchivo<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
+		apArchivo<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
+		apArchivo<<endl;
+		copia=copia->siguiente;
+
+	}while( copia != raiz);
+	return;
 }
 
 bool ListaCircular::vacia(){
@@ -182,30 +199,32 @@ void ListaCircular::buscar(){
     switch(convertir){
 		case 1:	
 			char marca[12];
-			char resp; //
+			char resp; 
 			do{
                 cout << "\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tMarca: ";
-					fflush(stdin);
-					cin.getline(marca,12);
-					fflush(stdin);
+				fflush(stdin);
+				cin.getline(marca,12);
+				fflush(stdin);
 					do{	
-                        if(strcmp(copia->marca,marca)==0){
+                	    if(strcmp(copia->marca, marca) == 0){
                             cout<<endl;
-                            cout<<"\t\t|Marca: "<<copia->marca<<endl;
-						    cout<<"\t\t|Placa Vehicular: "<<copia->placaVehicular<<endl;
-						    cout<<"\t\t|Propietario: "<<copia->nombrePropietario<<endl;
+                            cout<<"\t\t|Marca: "<< copia->marca<<endl;
+						    cout<<"\t\t|Placa Vehicular: "<< copia->placaVehicular<<endl;
+						    cout<<"\t\t|Propietario: "<< copia->nombrePropietario<<endl;
 						}
-						cout<<"\t\t*********************************" << endl;
+						cout<<"\t\t--------------------------------" << endl;
     					copia=copia->siguiente;
 	    		    }while(copia!=raiz);
-					cout<<"\t\tDesea buscar otro nombre? s/S: "; cin>>resp;
+					cout<<"\t\tDesea buscar otro nombre? S/s: "; 
+					cin>>resp;
 					system("cls");
 			}while(resp=='s'||resp=='S');
 			return;
 			break;
+
 		case 2:	
 			char placaVehicular[10];
 			do{
