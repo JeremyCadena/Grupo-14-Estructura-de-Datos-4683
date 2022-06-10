@@ -65,13 +65,22 @@ void ListaCircular::agregar(){
 	
 	Vehiculo *aux = raiz;
 	string nuevaPlaca;
+	string nuevoNombre;
+	string nuevaMarca;
 	string raizPlaca;
 	if(aux!=NULL){
 		do{
 			nuevaPlaca=nuevo->placaVehicular;
+			nuevoNombre=nuevo->nombrePropietario;
+			nuevaMarca=nuevo->marca;
 			raizPlaca=aux->placaVehicular;
 			if(nuevaPlaca == raizPlaca){
 				cout <<"\nERROR: La placa ya esta existente."<<endl;
+				system("pause");
+				return;
+			}
+			if(nuevaPlaca.size()==0 || nuevoNombre.size()==0 || nuevaMarca.size()==0){
+				cout <<"\nERROR: Un elemento ingresado esta vacio."<<endl;
 				system("pause");
 				return;
 			}

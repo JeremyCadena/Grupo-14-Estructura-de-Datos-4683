@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string.h>
 #include <fstream>
+#include <windows.h>
 
 class ListaCircular {
 private:

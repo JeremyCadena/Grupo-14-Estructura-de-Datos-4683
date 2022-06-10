@@ -57,8 +57,8 @@ int main(int argc, char** argv) {
 
 void menu(){
 	const char *titulo[] = {"--------------------------------------","|         MECANICA SAN EDUARDO        |","--------------------------------------"};
-	const char *opciones[]={"\tRegistro de vehiculos","\tConsultar vehiculo","\tBuscar un vehiculo","\tSalida del sistema", "----------------------------------------"};
-	int n = 4; // Numero de opciones
+	const char *opciones[]={"\tRegistro de vehiculos","\tConsultar vehiculo","\tBuscar un vehiculo", "\tManual de ayuda","\tSalida del sistema", "----------------------------------------"};
+	int n = 5; // Numero de opciones
 	int m = 3; //Numero de lineas de titulo
 	int sw=0,validandoL;
 	int convertir;
@@ -78,6 +78,9 @@ void menu(){
 				lst.buscar();
 				break;	
 			case 4:
+				ShellExecute(GetDesktopWindow(), "open","Manual de registro de vehiculos.pdf", NULL, NULL, SW_SHOWNORMAL);
+				break;
+			case 5:
 				repite = false;
 				cout<<"\n\t\tGracias por usar el programa :D"<<endl;
 				break;
