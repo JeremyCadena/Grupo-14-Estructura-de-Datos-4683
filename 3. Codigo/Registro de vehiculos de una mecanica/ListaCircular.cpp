@@ -65,16 +65,14 @@ void ListaCircular::agregar(){
 		nuevo->anterior=nuevo;
 		raiz=nuevo; //con esto se agrega el nodo
 	}else{
-		nuevo->siguiente=raiz->siguiente;
-		nuevo->anterior=raiz;
-		raiz->siguiente->anterior=nuevo;
-		raiz->siguiente=nuevo;		
+		nuevo->siguiente=raiz;
+		nuevo->anterior=raiz->anterior;
+		raiz->anterior->siguiente=nuevo;
+		raiz->anterior=nuevo;		
 	}
 	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
+	Vehiculo *copia = raiz->anterior;
 	
-	Vehiculo *copia = raiz;
-	Vehiculo *aux = copia;
-	copia=copia->anterior;
 	//Guardar la lista en el txt////////////////
 	string linea;
 	string vacio;//buscar si el txt esta vacio
@@ -89,6 +87,7 @@ void ListaCircular::agregar(){
 		apArchivo << "\t\t\t----------------------------" << endl;
 		apArchivo<<endl;	
 		apArchivo<<"\t\t--------------------------------------------"<<endl;
+		
 	}
 		apArchivo<<"\t\tMarca: "<<nuevo->marca<<endl;
 		apArchivo<<"\t\tPlaca Vehicular: "<<nuevo->placaVehicular<<endl;
@@ -96,20 +95,19 @@ void ListaCircular::agregar(){
 		apArchivo<<endl;
 		apArchivo<<"\t\t--------------------------------------------"<<endl;
 		
-		
-		do {
-		upArchivo << "\n\t\t\t--------------------------------------" << endl;
-		upArchivo << "\t\t\t|     Lista de Registros Inversa    |" << endl;
-		upArchivo << "\t\t\t--------------------------------------" << endl;
+		upArchivo << "\n\t\t\t----------------------------" << endl;
+		upArchivo << "\t\t\t|     Lista de Registros    |" << endl;
+		upArchivo << "\t\t\t----------------------------" << endl;
 		upArchivo<<endl;	
-        upArchivo<<"\t\t--------------------------------------------"<<endl;
+		upArchivo<<"\t\t--------------------------------------------"<<endl;
+	do{	
         upArchivo<<"\t\tMarca: "<<copia->marca<<endl;
         upArchivo<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
         upArchivo<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
         upArchivo<<endl;
+        upArchivo<<"\t\t--------------------------------------------"<<endl;
         copia=copia->anterior;
-	} while( copia != aux);
-		
+	}while(copia!=raiz->anterior);
 	apArchivo.close();
 	upArchivo.close();
 	inArchivo.close();
