@@ -69,7 +69,22 @@ void ListaCircular::agregar(){
         cin.getline(nuevo->nombrePropietario,40);
         validandoL=validarCadenas(nuevo->nombrePropietario);
 	}while(validandoL!=0);
-
+	
+	Vehiculo *aux = raiz;
+	string nuevaPlaca;
+	string raizPlaca;
+	if(aux!=NULL){
+		do{
+			nuevaPlaca=nuevo->placaVehicular;
+			raizPlaca=aux->placaVehicular;
+			if(nuevaPlaca == raizPlaca){
+				cout <<"\nERROR: La placa ya esta existente."<<endl;
+				system("pause");
+				return;
+			}
+			aux=aux->siguiente;
+		}while(aux!=raiz);
+	}
 	if(raiz==NULL){
 		nuevo->siguiente=nuevo;
 		nuevo->anterior=nuevo;
@@ -81,6 +96,7 @@ void ListaCircular::agregar(){
 		raiz->anterior=nuevo;		
 	}
 	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
+	system("pause");
 	
 	Vehiculo *copia = raiz;
 	//Guardar la lista en el txt////////////////
@@ -150,38 +166,35 @@ void ListaCircular::consultarPrimero(){
         cout<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
         cout<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
         cout<<endl;
-        copia=copia->anterior;
+        copia=copia->siguiente;
 	} while( copia != raiz);
 	system("pause");
-	return;
+    return;
 }
 
 void ListaCircular::consultarUltimo(){
-    ifstream inArchivo;
-	inArchivo.open("RegistroInverso.txt", ios::in);
-    string linea;
-	string vacio;
-	string copiar;
-	if ( ! inArchivo ) {
-        cout << "\nNo existe el archivo --> RegistroInverso.txt" <<endl;
-        system("pause");
-        return;
-    }
-	while(!inArchivo.eof()){
-		getline(inArchivo,linea);
-		vacio=vacio+linea;
-		copiar=copiar+linea+"\n";
+    Vehiculo *copia = raiz->anterior;
+    if ( copia == NULL ) {
+		cout << "\n\t\tNo hay registros disponibles" << endl;
+		system("pause");
+		return;
 	}
-    	if(vacio.size()!=0){
-    		cout << copiar;
-    		system("pause");
-			return;
-		}
-		else{
-			cout << "\n\t\tNo hay registros disponibles" << endl;
-			system("pause");
-			return;
-		}
+
+    cout << "\t\t\t--------------------------" << endl;
+	cout << "\t\t\t|      Registros         |" << endl;
+	cout << "\t\t\t--------------------------" << endl;
+
+	do {
+        cout<<endl;	
+        cout<<"\t\t--------------------------------------------"<<endl;
+        cout<<"\t\tMarca: "<<copia->marca<<endl;
+        cout<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
+        cout<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
+        cout<<endl;
+        copia=copia->anterior;
+	} while( copia != raiz->anterior);
+	system("pause");
+    return;
 }
 
 void ListaCircular::borrar(){

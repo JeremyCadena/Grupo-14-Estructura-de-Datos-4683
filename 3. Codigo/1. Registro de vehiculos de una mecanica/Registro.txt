@@ -1,0 +1,21 @@
+
+			----------------------------
+			|     Lista de Registros    |
+			----------------------------
+
+		--------------------------------------------
+		Marca: asd
+		Placa Vehicular: asd
+		Propietario: asd
+
+		--------------------------------------------
+		Marca: zxc
+		Placa Vehicular: zxc
+		Propietario: zxc
+
+		--------------------------------------------
+		Marca: qwe
+		Placa Vehicular: qwe
+		Propietario: qwe
+
+		--------------------------------------------
