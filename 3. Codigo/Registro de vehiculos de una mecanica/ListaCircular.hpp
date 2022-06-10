@@ -1,15 +1,13 @@
 #pragma once
 #include "Vehiculo.hpp"
+#include "menuInteractivo.cpp"
 #include <iostream>
-#include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 #include <fstream>
 
 class ListaCircular {
 private:
-    Vehiculo *raiz = NULL;
+    Vehiculo *raiz=NULL;
 public:
     ListaCircular();
     void agregar();

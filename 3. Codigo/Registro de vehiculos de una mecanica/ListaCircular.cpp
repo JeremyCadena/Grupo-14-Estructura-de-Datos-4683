@@ -1,5 +1,4 @@
 #include "ListaCircular.hpp"
-
 using namespace std;
 
 int validarCadenas(char cadena[50]);
@@ -12,9 +11,9 @@ ListaCircular::ListaCircular(){
 
 void ListaCircular::agregar(){
     ofstream apArchivo;  
-    apArchivo.open("C:/Users/jejoc/OneDrive/Escritorio/Jeremy  ESPE/Software/Semestre SI MAY-SEP22/1. Estructura de Datos/Trabajos en C++/Registro de vehiculos de una mecanica/Registro.txt", ios::app);
+    apArchivo.open("Registro.txt", ios::app);
     if ( ! apArchivo ) {
-        cout << "Problema al abrir archivo --> Registro.txt" <<endl;
+        cout << "\nProblema al abrir archivo --> Registro.txt" <<endl;
         return;
     }
 
@@ -22,11 +21,11 @@ void ListaCircular::agregar(){
     int i=0;
     nuevo = new Vehiculo();
     if(nuevo==NULL){
-        cout<<"\t\t\tNO HAY MEMORIA SUFICIENTE"<<endl;
+        cout<<"\n\t\t\tNO HAY MEMORIA SUFICIENTE"<<endl;
 		return;
 	}
 
-    cout<<"\t\t\t|Registro del Vehiculo|"<<endl;
+    cout<<"\n\t\t\t|Registro del Vehiculo|"<<endl;
 	cout<<"\t\t\t-----------------------"<<endl;
 	cout<<endl;
 
@@ -62,11 +61,11 @@ void ListaCircular::agregar(){
 		raiz->siguiente->anterior=nuevo;
 		raiz->siguiente=nuevo;		
 	}
-	cout<<"\t\tRegistro de Vehiculo exitoso!"<<endl;
+	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
 
 	Vehiculo *copia=raiz;	
 	// Imprimir la lista
-	apArchivo << "\t\t\t----------------------------" << endl;
+	apArchivo << "\n\t\t\t----------------------------" << endl;
 	apArchivo << "\t\t\t|     Lista de Registros    |" << endl;
 	apArchivo << "\t\t\t----------------------------" << endl;
 	do {
@@ -96,7 +95,7 @@ void ListaCircular::consultarPrimero(){
 		return;
 	}
 
-    cout << "\t\t\t--------------------------" << endl;
+    cout << "\n\t\t\t--------------------------" << endl;
 	cout << "\t\t\t|      Registros         |" << endl;
 	cout << "\t\t\t--------------------------" << endl;
 
@@ -119,7 +118,7 @@ void ListaCircular::consultarUltimo(){
 		return;
 	}
 
-    cout << "\t\t\t--------------------------" << endl;
+    cout << "\n\t\t\t--------------------------" << endl;
 	cout << "\t\t\t|      Registros         |" << endl;
 	cout << "\t\t\t--------------------------" << endl;
 
@@ -189,119 +188,131 @@ void ListaCircular::borrar(){
 	  eliminar=eliminar->siguiente;			
 	} while (raiz != eliminar);
 	cout << "\t\tSe mostraron todos los registros..." << endl;
-	return;		
+	return;	
 }
 
 void ListaCircular::buscar(){
     Vehiculo *copia = raiz;
-    char opcionBuscar[2];
-	int convertir;
+    int opcionBuscar;
     if(copia==NULL){
-        cout<<"\t\t No hay registros disponibles"<<endl;
+        cout<<"\n\t\t No hay registros disponibles"<<endl;
 		return;
 	}
-
-    cout << "\t\t\t|   Busqueda de Vehiculos   |" << endl;
-	cout << "\t\t\t-----------------------------" << endl;
-	cout<<"\n\n";
-		
-	cout<<"\t\t-----------------------------" << endl;
-	cout<<"\t\tPor su marca..............[1]"<<endl;
-	cout<<"\t\tPor placa vehicular.......[2]"<<endl;
-	cout<<"\t\tPor propietario...........[3]"<<endl;
-	cout<<"\t\t-----------------------------" << endl;
-	cout<<"\t\tIngrese su opcion:";cin>>opcionBuscar;
-	
-    int sw=0;
-	sw=validarNum(opcionBuscar);
-	if(sw!=0){
-		cout<<"\t\tIngrese una opcion validad (1-3)";
-	}	
-	
-    convertir = atoi(opcionBuscar);
-	system("cls");
-    switch(convertir){
-		case 1:	
-			char marca[12];
-			char resp; 
-			do{
-                cout << "\t\t\t--------------------------" << endl;
-				cout << "\t\t\t|        Registro         |" << endl;
-				cout << "\t\t\t--------------------------" << endl;
-				cout<<"\t\tMarca: ";
-				fflush(stdin);
-				cin.getline(marca,12);
-				fflush(stdin);
-					do{	
-                	    if(strcmp(copia->marca, marca) == 0){
-                            cout<<endl;
-                            cout<<"\t\t|Marca: "<< copia->marca<<endl;
-						    cout<<"\t\t|Placa Vehicular: "<< copia->placaVehicular<<endl;
-						    cout<<"\t\t|Propietario: "<< copia->nombrePropietario<<endl;
+	bool regresar = true;
+	const char *titulo[]={"----------------------------","|   Busqueda de Vehiculos   |","----------------------------"};
+	const char *opciones[]={"\tPor su marca","\tPor placa vehicular","\tPor propietario","Regresar al menu principal","-----------------------------"};
+	int n=4;
+	int m=3;
+	do{
+		bool menuBuscar=true;
+		opcionBuscar=menuInteractivo(titulo,opciones,n,m);
+    	switch(opcionBuscar){
+			case 1:	
+				char marca[12];
+				char resp;
+				do{
+                	cout << "\n\t\t\t--------------------------" << endl;
+					cout << "\t\t\t|        Registro         |" << endl;
+					cout << "\t\t\t--------------------------" << endl;
+					cout<<"\t\tMarca: ";
+					fflush(stdin);
+					cin.getline(marca,12);
+					fflush(stdin);
+						do{	
+                	    	if(strcmp(copia->marca, marca) == 0){
+                            	cout<<endl;
+                            	cout<<"\t\t|Marca: "<< copia->marca<<endl;
+						    	cout<<"\t\t|Placa Vehicular: "<< copia->placaVehicular<<endl;
+						    	cout<<"\t\t|Propietario: "<< copia->nombrePropietario<<endl;
+							}
+							cout<<"\t\t--------------------------------" << endl;
+    						copia=copia->siguiente;
+	    		    	}while(copia!=raiz);
+	    		    	const char *subtitulo[]={"----------------------------","|  Desea buscar otra marca?  |","----------------------------"};
+	    		    	const char *subopciones[]={"\tSi","\tNo","----------------------------"};
+	    		    	int o=2;
+	    		    	int p=3;
+	    		    	int op;
+	    		    	system("pause");
+	    		    	op=menuInteractivo(subtitulo,subopciones,o,p);
+	    		    	switch(op){
+	    		    		case 1:
+	    		    			break;
+	    		    		case 2:
+	    		    			menuBuscar=false;
+	    		    			break;
 						}
-						cout<<"\t\t--------------------------------" << endl;
-    					copia=copia->siguiente;
-	    		    }while(copia!=raiz);
-					cout<<"\t\tDesea buscar otro nombre? S/s: "; 
-					cin>>resp;
-					system("cls");
-			}while(resp=='s'||resp=='S');
-			return;
-			break;
+				}while(menuBuscar);
+				return;
+				break;
 
-		case 2:	
-			char placaVehicular[10];
-			do{
-				cout << "\t\t\t--------------------------" << endl;
-				cout << "\t\t\t|        Registro         |" << endl;
-				cout << "\t\t\t--------------------------" << endl;
-				cout<<"\t\tPlaca vehicular: ";
-				fflush(stdin);
-				cin.getline(placaVehicular,10);
-				fflush(stdin);
-				do{	
-                    if(strcmp(copia->placaVehicular,placaVehicular)==0){
-                        cout<<endl;
-                        cout<<"\t\t|Marca: "<<copia->marca<<endl;
-					    cout<<"\t\t|Placa Vehicular: "<<copia->placaVehicular<<endl;
-						cout<<"\t\t|Propietario: "<<copia->nombrePropietario<<endl;
+			case 2:	
+				char placaVehicular[10];
+				do{
+					cout << "\n\t\t\t--------------------------" << endl;
+					cout << "\t\t\t|        Registro         |" << endl;
+					cout << "\t\t\t--------------------------" << endl;
+					cout<<"\t\tPlaca vehicular: ";
+					fflush(stdin);
+					cin.getline(placaVehicular,10);
+					fflush(stdin);
+					do{	
+                    	if(strcmp(copia->placaVehicular,placaVehicular)==0){
+                        	cout<<endl;
+                        	cout<<"\t\t|Marca: "<<copia->marca<<endl;
+					    	cout<<"\t\t|Placa Vehicular: "<<copia->placaVehicular<<endl;
+							cout<<"\t\t|Propietario: "<<copia->nombrePropietario<<endl;
+						}
+						cout<<"\t\t*********************************" << endl;
+    					copia=copia->siguiente;
+	    			}while(copia!=raiz);
+					const char *subtitulo[]={"----------------------------","|  Desea buscar otra placa?  |","----------------------------"};
+	    		    const char *subopciones[]={"\tSi","\tNo","----------------------------"};
+	    		    int o=2;
+	    		    int p=3;
+	    		    int op;
+	    		    system("pause");
+	    		    op=menuInteractivo(subtitulo,subopciones,o,p);
+	    		    switch(op){
+	    		    	case 1:
+	    		    		break;
+	    		    	case 2:
+	    		    		menuBuscar=false;
+	    		    		break;
 					}
-					cout<<"\t\t*********************************" << endl;
-    				copia=copia->siguiente;
-	    		}while(copia!=raiz);
-				cout<<"\t\tDesea buscar otra placa vehicular? s/S: "; cin>>resp;
+				}while(menuBuscar);
+				return;
+				break;	
+			case 3:	
+				char nombrePropietario[40];
+				do{
+					cout << "\n\t\t\t--------------------------" << endl;
+					cout << "\t\t\t|        Registro         |" << endl;
+					cout << "\t\t\t--------------------------" << endl;
+					cout<<"\t\tPropietario: ";
+					fflush(stdin);
+					cin.getline(nombrePropietario,40);
+					fflush(stdin);
+					do{	
+                    	if(strcmp(copia->nombrePropietario,nombrePropietario)==0){
+                        	cout<<endl;
+                        	cout<<"\t\t|Marca: "<<copia->marca<<endl;
+					    	cout<<"\t\t|Placa Vehicular: "<<copia->placaVehicular<<endl;
+							cout<<"\t\t|Propietario: "<<copia->nombrePropietario<<endl;
+						}
+						cout<<"\t\t*********************************" << endl;
+    					copia=copia->siguiente;
+	    			}while(copia!=raiz);
+					cout<<"\t\tDesea buscar otra nombre? s/S: "; cin>>resp;
 					system("cls");
-			}while(resp=='s'||resp=='S');
-			return;
-			break;	
-		case 3:	
-			char nombrePropietario[40];
-			do{
-				cout << "\t\t\t--------------------------" << endl;
-				cout << "\t\t\t|        Registro         |" << endl;
-				cout << "\t\t\t--------------------------" << endl;
-				cout<<"\t\tPropietario: ";
-				fflush(stdin);
-				cin.getline(nombrePropietario,40);
-				fflush(stdin);
-				do{	
-                    if(strcmp(copia->nombrePropietario,nombrePropietario)==0){
-                        cout<<endl;
-                        cout<<"\t\t|Marca: "<<copia->marca<<endl;
-					    cout<<"\t\t|Placa Vehicular: "<<copia->placaVehicular<<endl;
-						cout<<"\t\t|Propietario: "<<copia->nombrePropietario<<endl;
-					}
-					cout<<"\t\t*********************************" << endl;
-    				copia=copia->siguiente;
-	    		}while(copia!=raiz);
-				cout<<"\t\tDesea buscar otra nombre? s/S: "; cin>>resp;
-					system("cls");
-			}while(resp=='s'||resp=='S');
-			return;
-			break;	
-            default:
-				cout<<"\t\tOpcion no valida"<<endl;
-		}
+				}while(resp=='s'||resp=='S');
+				break;
+			case 4:
+				regresar = false;
+				break;	
+			}
+	}while(regresar);
+	return;
 }
 
 int validarNum(char numero[10]){
@@ -321,16 +332,16 @@ int validarNum(char numero[10]){
 
 int validarCadenas(char cadena[50]){
 	int i=0, validandoL=0, j;
-	j=strlen(cadena); 
+	j=strlen(cadena); //se asigna el numero de caracteres que tiene la cadena a J
 	
 	while(i<j&&validandoL==0){
 	
-		if(isalpha(cadena[i])!=0||cadena[i]==32) 
+		if(isalpha(cadena[i])!=0||cadena[i]==32) // 32 para que acepte espacios tambien 
 		{
-			i++; 
+			i++; //si es una letra avanza de lo contrario entra al else para salirse del ciclo
 		}else{
 			validandoL=1;
 		}	
 	}	
- 	return validandoL;
+ return validandoL;
 }

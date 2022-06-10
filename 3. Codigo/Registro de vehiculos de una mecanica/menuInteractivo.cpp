@@ -15,7 +15,7 @@ void gotoxy(int x,int y){
       SetConsoleCursorPosition(hcon,dwPos);  
  }  
  
-int menuInteractivo(const char *titulo[],const char *opciones[], int n){
+int menuInteractivo(const char *titulo[],const char *opciones[], int n, int m){
 	int opcionSeleccionada=1;
 	int tecla;
 	bool repite = true;
@@ -23,12 +23,14 @@ int menuInteractivo(const char *titulo[],const char *opciones[], int n){
 	do{
 		system("cls");
 		
-		gotoxy(6,3+opcionSeleccionada);cout << "==>";
+		gotoxy(6,3+opcionSeleccionada); std::cout << "==>";
 		//imprime titulo
-		gotoxy(15, 2); cout << titulo;
+		for(int j=0;j<m;j++){
+				gotoxy(10, 1+j); std::cout << titulo[j];
+		}
 		//imprimer opciones
 		for(int i = 0;i < n+1;i++){
-			gotoxy(10,4+i);cout<<opciones[i];
+			gotoxy(10,4+i);std::cout<<opciones[i];
 		}
 		
 		do{

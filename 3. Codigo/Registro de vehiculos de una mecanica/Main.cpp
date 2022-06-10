@@ -1,7 +1,6 @@
 #include<stdlib.h>
 #include "ListaCircular.cpp"
 #include "marquesina.h"
-#include "menuInteractivo.cpp"
 #define USER "admin"
 #define PASS "admin123"
 
@@ -50,33 +49,14 @@ void menu(){
 	const char *titulo[] = {"--------------------------------------","|         MECANICA SAN EDUARDO        |","--------------------------------------"};
 	const char *opciones[]={"\tRegistro de vehiculos","\tConsultar vehiculo al inicio","\tConsultar vehiculo al final","\tBorrar un vehiculo","\tBuscar un vehiculo","\tSalida del sistema", "----------------------------------------"};
 	int n = 6; // Numero de opciones
+	int m = 3; //Numero de lineas de titulo
 	int sw=0,validandoL;
 	int convertir;
-<<<<<<< HEAD
-	char opcion[2]; // validacion de solo numeros
-=======
 	int opcion;
->>>>>>> 1ac6e1fa14e4165d27b76fe11b3a3eb9a59650a6
     ListaCircular lst;
 	bool repite = true;							
 	do{
-		opcion=menuInteractivo(titulo, opciones,n);
-		/*system("cls");
-		cout<<"\n\n";
-		cout<<"\t\t--------------------------------------\n";
-		cout<<"\t\t|         MECANICA SAN EDUARDO        |\n";
-		cout<<"\t\t--------------------------------------\n";
-		cout<<"\t\tRegistro de vehiculos................[1]\n\n";
-		cout<<"\t\tConsultar vehiculo al inicio.........[2]\n\n";
-		cout<<"\t\tConsultar vehiculo al final..........[3]\n\n";
-		cout<<"\t\tBorrar un vehiculo...................[4]\n\n";
-		cout<<"\t\tBuscar un vehiculo...................[5]\n\n";
-		cout<<"\t\tSalida del sistema...................[6]\n\n";
-		cout<<"\t\t----------------------------------------\n\n";
-		cout<<"\t\tINGRESE LA OPCION: ";cin>>opcion;
-		system("cls");
-		*/
-		//valido que ingrese numero y no pueda ingresar otro tipo de dato
+		opcion=menuInteractivo(titulo, opciones,n,m);
 		switch(opcion){
 			case 1:
 				lst.agregar();
@@ -98,7 +78,5 @@ void menu(){
 				cout<<"\n\t\tGracias por usar el programa :D"<<endl;
 				break;
 	    }
-	    system("pause");
 	}while(repite);
-	return;
 }
