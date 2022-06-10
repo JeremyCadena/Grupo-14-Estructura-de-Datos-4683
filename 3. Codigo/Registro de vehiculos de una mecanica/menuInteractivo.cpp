@@ -28,7 +28,7 @@ int menuInteractivo(const char *titulo[],const char *opciones[], int n, int m){
 		for(int j=0;j<m;j++){
 				gotoxy(10, 1+j); std::cout << titulo[j];
 		}
-		//imprimer opciones
+		//imprimir opciones
 		for(int i = 0;i < n+1;i++){
 			gotoxy(10,4+i);std::cout<<opciones[i];
 		}

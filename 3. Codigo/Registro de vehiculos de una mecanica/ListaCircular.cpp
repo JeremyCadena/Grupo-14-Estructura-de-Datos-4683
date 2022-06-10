@@ -91,7 +91,8 @@ bool ListaCircular::vacia(){
 void ListaCircular::consultarPrimero(){
     Vehiculo *copia = raiz;
     if ( copia == NULL ) {
-		cout << "\t\tNo hay registros disponibles" << endl;
+		cout << "\n\t\tNo hay registros disponibles" << endl;
+		system("pause");
 		return;
 	}
 
@@ -108,13 +109,15 @@ void ListaCircular::consultarPrimero(){
         cout<<endl;
         copia=copia->siguiente;
 	} while( copia != raiz);
+	system("pause");
     return;
 }
 
 void ListaCircular::consultarUltimo(){
     Vehiculo *copia = raiz;
     if ( copia == NULL ) {
-		cout << "\t\tNo hay registros disponibles" << endl;
+		cout << "\n\t\tNo hay registros disponibles" << endl;
+		system("pause");
 		return;
 	}
 
@@ -131,6 +134,7 @@ void ListaCircular::consultarUltimo(){
         cout<<endl;
         copia=copia->anterior;
 	} while( copia != raiz);
+	system("pause");
     return;
 }
 
@@ -138,7 +142,8 @@ void ListaCircular::borrar(){
     Vehiculo *eliminar = raiz;
     char resp;
     if ( eliminar == NULL ) {
-		cout << "\t\tNo hay un registro existente" << endl;
+		cout << "\n\t\tNo hay un registro existente" << endl;
+		system("pause");
 		return;
 	}
 
@@ -152,14 +157,30 @@ void ListaCircular::borrar(){
 	cout<<"\t\t|Placa Vehicular: "<<eliminar->placaVehicular<<endl;
 	cout<<"\t\t|Propietario: "<<eliminar->nombrePropietario<<endl;
     cout<<"\t\t------------------------------" << endl;
-    cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
+    const char *subtitulo[]={"------------------------------","|  Seguro que desea eliminar?  |","------------------------------"};
+	    const char *subopciones[]={"\tSi","\tNo","------------------------------"};
+	   	int o=2;
+	   	int p=3;
+	   	int op;
+	   	system("pause");
+	   	op=menuInteractivo(subtitulo,subopciones,o,p);
+	   	switch(op){
+	   		case 1:
+	   			break;
+	   		case 2:
+	   			while ( raiz->siguiente != eliminar ) {		 
+    		    raiz=raiz->siguiente;
+    			}
+    			break;
+		}
+    /*cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
 
     if ( resp=='S' || resp=='s') {
       	 raiz=NULL;
       	 free(eliminar);
       	 cout <<"\t\tRegistro eliminado..." << endl;
       	 system("pause");
-	  }
+	  }*/
 	  return;
 	}
 
@@ -174,17 +195,32 @@ void ListaCircular::borrar(){
 		cout<<"\t\t|Placa Vehicular: "<<eliminar->placaVehicular<<endl;
 		cout<<"\t\t|Propietario: "<<eliminar->nombrePropietario<<endl;
 		cout<<"\t\t------------------------------" << endl;
-		cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
+		const char *subtitulo[]={"------------------------------","|  Seguro que desea eliminar?  |","------------------------------"};
+	    const char *subopciones[]={"\tSi","\tNo","------------------------------"};
+	   	int o=2;
+	   	int p=3;
+	   	int op;
+	   	system("pause");
+	   	op=menuInteractivo(subtitulo,subopciones,o,p);
+	   	switch(op){
+	   		case 1:
+	   			break;
+	   		case 2:
+	   			while ( raiz->siguiente != eliminar ) {		 
+    		    raiz=raiz->siguiente;
+    			}
+    			raiz->siguiente = raiz->siguiente->siguiente;
+         		raiz->siguiente->siguiente->anterior = raiz;
+         		free(eliminar);
+         		cout <<"\t\tREGISTRO ELIMINADO" << endl;
+         		return;
+    			break;
+		}
+		/*cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
 		if ( resp=='S' || resp=='s') {
          while ( raiz->siguiente != eliminar ) {		 
               raiz=raiz->siguiente;
-         }
-         raiz->siguiente = raiz->siguiente->siguiente;
-         raiz->siguiente->siguiente->anterior = raiz;
-         free(eliminar);
-         cout <<"\t\tREGISTRO ELIMINADO" << endl;
-         return;
-	  } 
+         }*/
 	  eliminar=eliminar->siguiente;			
 	} while (raiz != eliminar);
 	cout << "\t\tSe mostraron todos los registros..." << endl;
@@ -196,6 +232,7 @@ void ListaCircular::buscar(){
     int opcionBuscar;
     if(copia==NULL){
         cout<<"\n\t\t No hay registros disponibles"<<endl;
+        system("pause");
 		return;
 	}
 	bool regresar = true;
@@ -243,7 +280,6 @@ void ListaCircular::buscar(){
 	    		    			break;
 						}
 				}while(menuBuscar);
-				return;
 				break;
 
 			case 2:	
@@ -281,7 +317,6 @@ void ListaCircular::buscar(){
 	    		    		break;
 					}
 				}while(menuBuscar);
-				return;
 				break;	
 			case 3:	
 				char nombrePropietario[40];
@@ -303,9 +338,21 @@ void ListaCircular::buscar(){
 						cout<<"\t\t*********************************" << endl;
     					copia=copia->siguiente;
 	    			}while(copia!=raiz);
-					cout<<"\t\tDesea buscar otra nombre? s/S: "; cin>>resp;
-					system("cls");
-				}while(resp=='s'||resp=='S');
+					const char *subtitulo[]={"-------------------------------","|  Desea buscar otro nombre?  |","-------------------------------"};
+	    		    const char *subopciones[]={"\tSi","\tNo","-------------------------------"};
+	    		    int o=2;
+	    		    int p=3;
+	    		    int op;
+	    		    system("pause");
+	    		    op=menuInteractivo(subtitulo,subopciones,o,p);
+	    		    switch(op){
+	    		    	case 1:
+	    		    		break;
+	    		    	case 2:
+	    		    		menuBuscar=false;
+	    		    		break;
+					}
+				}while(menuBuscar);
 				break;
 			case 4:
 				regresar = false;
