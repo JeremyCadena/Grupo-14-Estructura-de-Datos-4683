@@ -45,7 +45,7 @@ void ListaCircular::agregar(){
         cin.getline(nuevo->marca,12);
         validandoL=validarCadenas(nuevo->marca);
 	}while(validandoL!=0); 
-
+	
     cin.clear();
     fflush(stdin);
     cout<<"\t\t|Ingrese la Placa del Vehiculo: ";
@@ -60,7 +60,7 @@ void ListaCircular::agregar(){
         validandoL=validarCadenas(nuevo->nombrePropietario);
 	}while(validandoL!=0);
 
-    if(raiz==NULL){
+	if(raiz==NULL){
 		nuevo->siguiente=nuevo;
 		nuevo->anterior=nuevo;
 		raiz=nuevo; //con esto se agrega el nodo
@@ -71,8 +71,8 @@ void ListaCircular::agregar(){
 		raiz->anterior=nuevo;		
 	}
 	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
-	Vehiculo *copia = raiz->anterior;
 	
+	Vehiculo *copia = raiz;
 	//Guardar la lista en el txt////////////////
 	string linea;
 	string vacio;//buscar si el txt esta vacio
@@ -122,31 +122,28 @@ bool ListaCircular::vacia(){
 }
 
 void ListaCircular::consultarPrimero(){
-	ifstream inArchivo;
-	inArchivo.open("Registro.txt", ios::in);
-    string linea;
-	string vacio;
-	string copiar;
-	if ( ! inArchivo ) {
-        cout << "\nNo existe el archivo --> Registro.txt" <<endl;
-        system("pause");
-        return;
-    }
-	while(!inArchivo.eof()){
-		getline(inArchivo,linea);
-		vacio=vacio+linea;
-		copiar=copiar+linea+"\n";
+	Vehiculo *copia = raiz;
+    if ( copia == NULL ) {
+		cout << "\n\t\tNo hay registros disponibles" << endl;
+		system("pause");
+		return;
 	}
-    	if(vacio.size()!=0){
-    		cout << copiar;
-    		system("pause");
-			return;
-		}
-		else{
-			cout << "\n\t\tNo hay registros disponibles" << endl;
-			system("pause");
-			return;
-		}
+
+    cout << "\t\t\t--------------------------" << endl;
+	cout << "\t\t\t|      Registros         |" << endl;
+	cout << "\t\t\t--------------------------" << endl;
+
+	do {
+        cout<<endl;	
+        cout<<"\t\t--------------------------------------------"<<endl;
+        cout<<"\t\tMarca: "<<copia->marca<<endl;
+        cout<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
+        cout<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
+        cout<<endl;
+        copia=copia->anterior;
+	} while( copia != raiz);
+	system("pause");
+	return;
 }
 
 void ListaCircular::consultarUltimo(){
@@ -205,11 +202,13 @@ void ListaCircular::borrar(){
 	   	op=menuInteractivo(subtitulo,subopciones,o,p);
 	   	switch(op){
 	   		case 1:
+	   			raiz=NULL;
+      	 		free(eliminar);
+      	 		cout <<"\n\t\tRegistro eliminado..." << endl;
+      	 		system("pause");
 	   			break;
 	   		case 2:
-	   			while ( raiz->siguiente != eliminar ) {		 
-    		    raiz=raiz->siguiente;
-    			}
+	   			return;
     			break;
 		}
 	  return;
@@ -235,23 +234,18 @@ void ListaCircular::borrar(){
 	   	op=menuInteractivo(subtitulo,subopciones,o,p);
 	   	switch(op){
 	   		case 1:
+	   			while ( raiz->siguiente != eliminar ) {		 
+             	    raiz=raiz->siguiente;
+       			    }
+       			    raiz->siguiente = raiz->siguiente->siguiente;
+        			raiz->siguiente->siguiente->anterior = raiz;
+        		    free(eliminar);
+         			cout <<"\t\tREGISTRO ELIMINADO" << endl;
+        			return;	
 	   			break;
 	   		case 2:
-	   			while ( raiz->siguiente != eliminar ) {		 
-    		    raiz=raiz->siguiente;
-    			}
-    			raiz->siguiente = raiz->siguiente->siguiente;
-         		raiz->siguiente->siguiente->anterior = raiz;
-         		free(eliminar);
-         		cout <<"\t\tREGISTRO ELIMINADO" << endl;
-         		return;
     			break;
 		}
-		/*cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
-		if ( resp=='S' || resp=='s') {
-         while ( raiz->siguiente != eliminar ) {		 
-              raiz=raiz->siguiente;
-         }*/
 	  eliminar=eliminar->siguiente;			
 	} while (raiz != eliminar);
 	cout << "\t\tSe mostraron todos los registros..." << endl;
