@@ -127,6 +127,11 @@ void ListaCircular::consultarPrimero(){
     string linea;
 	string vacio;
 	string copiar;
+	if ( ! inArchivo ) {
+        cout << "\nNo existe el archivo --> Registro.txt" <<endl;
+        system("pause");
+        return;
+    }
 	while(!inArchivo.eof()){
 		getline(inArchivo,linea);
 		vacio=vacio+linea;
@@ -145,28 +150,31 @@ void ListaCircular::consultarPrimero(){
 }
 
 void ListaCircular::consultarUltimo(){
-    Vehiculo *copia = raiz;
-    if ( copia == NULL ) {
-		cout << "\n\t\tNo hay registros disponibles" << endl;
-		system("pause");
-		return;
+    ifstream inArchivo;
+	inArchivo.open("RegistroInverso.txt", ios::in);
+    string linea;
+	string vacio;
+	string copiar;
+	if ( ! inArchivo ) {
+        cout << "\nNo existe el archivo --> RegistroInverso.txt" <<endl;
+        system("pause");
+        return;
+    }
+	while(!inArchivo.eof()){
+		getline(inArchivo,linea);
+		vacio=vacio+linea;
+		copiar=copiar+linea+"\n";
 	}
-
-    cout << "\n\t\t\t--------------------------" << endl;
-	cout << "\t\t\t|      Registros         |" << endl;
-	cout << "\t\t\t--------------------------" << endl;
-
-	do {
-        cout<<endl;	
-        cout<<"\t\t--------------------------------------------"<<endl;
-        cout<<"\t\tMarca: "<<copia->marca<<endl;
-        cout<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
-        cout<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
-        cout<<endl;
-        copia=copia->anterior;
-	} while( copia != raiz);
-	system("pause");
-    return;
+    	if(vacio.size()!=0){
+    		cout << copiar;
+    		system("pause");
+			return;
+		}
+		else{
+			cout << "\n\t\tNo hay registros disponibles" << endl;
+			system("pause");
+			return;
+		}
 }
 
 void ListaCircular::borrar(){
@@ -204,14 +212,6 @@ void ListaCircular::borrar(){
     			}
     			break;
 		}
-    /*cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
-
-    if ( resp=='S' || resp=='s') {
-      	 raiz=NULL;
-      	 free(eliminar);
-      	 cout <<"\t\tRegistro eliminado..." << endl;
-      	 system("pause");
-	  }*/
 	  return;
 	}
 
