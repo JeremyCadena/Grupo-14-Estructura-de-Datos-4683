@@ -52,7 +52,7 @@ void ListaCircular::agregar(){
     cin.clear();
     fflush(stdin);
     cout<<"\t\t|Ingrese la Placa del Vehiculo: ";
-    cin.getline(nuevo->placaVehicular,10);
+    cin.getline(nuevo->placaVehicular,8);
     fflush(stdin);
     
     do{
@@ -137,6 +137,11 @@ bool ListaCircular::vacia(){
 void ListaCircular::consultarPrimero(){
 	ifstream inArchivo;
     inArchivo.open("Registro.txt", ios::in);
+    if ( ! inArchivo ) {
+        cout << "\nProblema al abrir archivo --> Registro.txt" <<endl;
+        system("pause");
+        return;
+    }
     string copia;
     string vacio;
     string texto;

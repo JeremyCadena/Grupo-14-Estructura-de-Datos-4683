@@ -16,6 +16,7 @@
 #include <string.h>
 #include <fstream>
 #include <windows.h>
+#include "EasyBMP.cpp"
 
 class ListaCircular {
 private:

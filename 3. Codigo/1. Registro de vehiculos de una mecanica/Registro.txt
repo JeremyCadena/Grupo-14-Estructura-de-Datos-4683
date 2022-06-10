@@ -1,0 +1,16 @@
+
+			----------------------------
+			|     Lista de Registros    |
+			----------------------------
+
+		--------------------------------------------
+		Marca: Mazda
+		Placa Vehicular: PCP2446
+		Propietario: Dylan Tipan
+
+		--------------------------------------------
+		Marca: Hyundai
+		Placa Vehicular: PCB7896
+		Propietario: Jeremy Cadena
+
+		--------------------------------------------

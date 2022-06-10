@@ -15,7 +15,7 @@ public:
 private:
 
     char marca[12];
-    char placaVehicular[10];
+    char placaVehicular[8];
     char nombrePropietario[40];
     Vehiculo *siguiente;
     Vehiculo *anterior;
