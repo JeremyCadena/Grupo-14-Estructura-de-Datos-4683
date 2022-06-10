@@ -1,0 +1,73 @@
+\hypertarget{marquesina_8h_source}{}\doxysection{marquesina.\+h}
+\mbox{\hyperlink{marquesina_8h}{Ir a la documentación de este archivo.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <Windows.h>}}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{class_marquesina}{Marquesina}} \{}
+\DoxyCodeLine{20     \textcolor{keyword}{private}:}
+\DoxyCodeLine{21     std::thread cadena;}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     std::string marquee\_limit(std::string\& text, \textcolor{keywordtype}{size\_t} limit) \{}
+\DoxyCodeLine{24         std::string temp = text;}
+\DoxyCodeLine{25         text.erase(0, 1);}
+\DoxyCodeLine{26         text += temp[0];}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28         \textcolor{keywordflow}{return} text.substr(0, limit);}
+\DoxyCodeLine{29     \}}
+\DoxyCodeLine{30     }
+\DoxyCodeLine{31     \textcolor{keyword}{public}:}
+\DoxyCodeLine{36     \mbox{\hyperlink{class_marquesina_a5fb99193f04406e8cd770af3638b4aa8}{Marquesina}}(std::string texto) \{}
+\DoxyCodeLine{37         cadena = std::thread(std::bind(\&\mbox{\hyperlink{class_marquesina_ad0ec709d569fd3bd4fabfd5f5f127b73}{Marquesina::procesarHilo}}, \textcolor{keyword}{this}, texto));}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_marquesina_ad0ec709d569fd3bd4fabfd5f5f127b73}{procesarHilo}}(std::string mensaje) \{}
+\DoxyCodeLine{45         HANDLE conhandler = GetStdHandle(STD\_OUTPUT\_HANDLE);}
+\DoxyCodeLine{46         std::string texto(mensaje);}
+\DoxyCodeLine{47         std::string mTexto = texto;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         CONSOLE\_SCREEN\_BUFFER\_INFO csbi;}
+\DoxyCodeLine{50         \textcolor{keywordtype}{int} col, fil;}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52         GetConsoleScreenBufferInfo(conhandler, \&csbi);}
+\DoxyCodeLine{53         col = csbi.srWindow.Right -\/ csbi.srWindow.Left + 1;}
+\DoxyCodeLine{54         fil = csbi.srWindow.Bottom -\/ csbi.srWindow.Top + 1;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \textcolor{keywordflow}{if} (mTexto.length() < col) \{}
+\DoxyCodeLine{57             \textcolor{keywordflow}{while} (mTexto.length() < col) \{}
+\DoxyCodeLine{58                 mTexto.append(\textcolor{stringliteral}{"{} "{}});}
+\DoxyCodeLine{59             \}}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62         SetConsoleCursorPosition(conhandler, \{0, 3\});}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{65             CHAR\_INFO* buff = (CHAR\_INFO*)calloc(col, \textcolor{keyword}{sizeof}(CHAR\_INFO));}
+\DoxyCodeLine{66             \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < mTexto.length(); i++) \{}
+\DoxyCodeLine{69                 buff[i].Char.AsciiChar = mTexto.at(i);}
+\DoxyCodeLine{70                 buff[i].Attributes = 15;}
+\DoxyCodeLine{71             \}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73             SMALL\_RECT pos = \{ 0, 0, col, 1 \};}
+\DoxyCodeLine{74             WriteConsoleOutputA(conhandler, buff, \{(SHORT)col, 1\}, \{ 0, 0 \}, \&pos);}
+\DoxyCodeLine{75             free(buff);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77             std::this\_thread::sleep\_for(std::chrono::milliseconds(200));}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79             mTexto = marquee\_limit(mTexto, col); \textcolor{comment}{// limite de la marquesina}}
+\DoxyCodeLine{80         \}}
+\DoxyCodeLine{81     \}}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{87     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_marquesina_abca1216c467f16fcdf71634eb3e97295}{presentar}}() \{}
+\DoxyCodeLine{88         cadena.detach();}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90 \};}
+
+\end{DoxyCode}
