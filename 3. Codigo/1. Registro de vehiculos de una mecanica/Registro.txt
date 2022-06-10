@@ -4,18 +4,13 @@
 			----------------------------
 
 		--------------------------------------------
-		Marca: asd
-		Placa Vehicular: asd
-		Propietario: asd
+		Marca: Mazda
+		Placa Vehicular: ASD456
+		Propietario: Dylan
 
 		--------------------------------------------
-		Marca: zxc
-		Placa Vehicular: zxc
-		Propietario: zxc
-
-		--------------------------------------------
-		Marca: qwe
-		Placa Vehicular: qwe
-		Propietario: qwe
+		Marca: 
+		Placa Vehicular: 
+		Propietario: 
 
 		--------------------------------------------

@@ -12,7 +12,7 @@
 #include "ListaCircular.cpp"
 #include "Marquesina.h"
 #define USER "admin"
-#define PASS "admin123"
+#define PASS "******"
 
 using namespace std;
 void menu();
@@ -57,8 +57,8 @@ int main(int argc, char** argv) {
 
 void menu(){
 	const char *titulo[] = {"--------------------------------------","|         MECANICA SAN EDUARDO        |","--------------------------------------"};
-	const char *opciones[]={"\tRegistro de vehiculos","\tConsultar vehiculo al inicio","\tConsultar vehiculo al final","\tBorrar un vehiculo","\tBuscar un vehiculo","\tSalida del sistema", "----------------------------------------"};
-	int n = 6; // Numero de opciones
+	const char *opciones[]={"\tRegistro de vehiculos","\tConsultar vehiculo","\tBuscar un vehiculo","\tSalida del sistema", "----------------------------------------"};
+	int n = 4; // Numero de opciones
 	int m = 3; //Numero de lineas de titulo
 	int sw=0,validandoL;
 	int convertir;
@@ -75,15 +75,9 @@ void menu(){
 				lst.consultarPrimero();
 				break;	
 			case 3:
-				lst.consultarUltimo();
-				break;
-			case 4:
-				lst.borrar();
-				break;
-			case 5:
 				lst.buscar();
 				break;	
-			case 6:
+			case 4:
 				repite = false;
 				cout<<"\n\t\tGracias por usar el programa :D"<<endl;
 				break;

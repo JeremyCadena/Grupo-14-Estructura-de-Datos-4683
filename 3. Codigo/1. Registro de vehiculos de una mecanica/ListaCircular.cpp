@@ -21,18 +21,11 @@ ListaCircular::ListaCircular(){
 
 void ListaCircular::agregar(){
     ofstream apArchivo; //Registro primero ultimo
-    ofstream upArchivo; //Registro ultimo primero
     ifstream inArchivo;
     apArchivo.open("Registro.txt", ios::app);
-    upArchivo.open("RegistroInverso.txt", ios::trunc);
     inArchivo.open("Registro.txt", ios::in);
     if ( ! apArchivo ) {
         cout << "\nProblema al abrir archivo --> Registro.txt" <<endl;
-        system("pause");
-        return;
-    }
-    if ( ! upArchivo ) {
-        cout << "\nProblema al abrir archivo --> RegistroInverso.txt" <<endl;
         system("pause");
         return;
     }
@@ -113,7 +106,6 @@ void ListaCircular::agregar(){
 		apArchivo << "\t\t\t----------------------------" << endl;
 		apArchivo<<endl;	
 		apArchivo<<"\t\t--------------------------------------------"<<endl;
-		
 	}
 		apArchivo<<"\t\tMarca: "<<nuevo->marca<<endl;
 		apArchivo<<"\t\tPlaca Vehicular: "<<nuevo->placaVehicular<<endl;
@@ -121,21 +113,7 @@ void ListaCircular::agregar(){
 		apArchivo<<endl;
 		apArchivo<<"\t\t--------------------------------------------"<<endl;
 		
-		upArchivo << "\n\t\t\t----------------------------" << endl;
-		upArchivo << "\t\t\t|     Lista de Registros    |" << endl;
-		upArchivo << "\t\t\t----------------------------" << endl;
-		upArchivo<<endl;	
-		upArchivo<<"\t\t--------------------------------------------"<<endl;
-	do{	
-        upArchivo<<"\t\tMarca: "<<copia->marca<<endl;
-        upArchivo<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
-        upArchivo<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
-        upArchivo<<endl;
-        upArchivo<<"\t\t--------------------------------------------"<<endl;
-        copia=copia->anterior;
-	}while(copia!=raiz->anterior);
 	apArchivo.close();
-	upArchivo.close();
 	inArchivo.close();
 	return;
 }
@@ -148,7 +126,23 @@ bool ListaCircular::vacia(){
 }
 
 void ListaCircular::consultarPrimero(){
-	Vehiculo *copia = raiz;
+	ifstream inArchivo;
+    inArchivo.open("Registro.txt", ios::in);
+    string copia;
+    string vacio;
+    string texto;
+    while(!inArchivo.eof()){
+    	getline(inArchivo,texto);
+    	vacio=vacio+texto;
+    	copia=copia+texto+"\n";
+	}
+    if ( vacio.size()==0 ) {
+		cout << "\n\t\tNo hay registros disponibles" << endl;
+		system("pause");
+		return;
+	}
+	cout<<copia;
+	/*Vehiculo *copia = raiz;
     if ( copia == NULL ) {
 		cout << "\n\t\tNo hay registros disponibles" << endl;
 		system("pause");
@@ -167,7 +161,7 @@ void ListaCircular::consultarPrimero(){
         cout<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
         cout<<endl;
         copia=copia->siguiente;
-	} while( copia != raiz);
+	} while( copia != raiz);*/
 	system("pause");
     return;
 }
