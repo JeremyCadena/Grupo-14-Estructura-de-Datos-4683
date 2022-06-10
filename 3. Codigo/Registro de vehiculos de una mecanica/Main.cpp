@@ -1,3 +1,13 @@
+/**
+ * @file Main.cpp
+ * @authors Cadena Jeremy - Tipan Dylan 
+ * @brief Archivo principal de nuestro programa
+ * @version 0.3
+ * @date 2022-06-10
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include<stdlib.h>
 #include "ListaCircular.cpp"
 #include "Marquesina.h"
