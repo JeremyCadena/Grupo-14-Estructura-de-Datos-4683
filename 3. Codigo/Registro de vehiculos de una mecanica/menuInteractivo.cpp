@@ -1,3 +1,13 @@
+/**
+ * @file menuInteractivo.cpp
+ * @authors Cadena Jeremy - Tipan Dylan
+ * @brief Archivo que controla la funcionalidad de menu interactivo
+ * @version 0.2
+ * @date 2022-06-09
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <iostream> 
 #include <conio.h>
 #include <stdio.h>  

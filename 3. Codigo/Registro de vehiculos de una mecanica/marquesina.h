@@ -1,3 +1,14 @@
+/**
+ * @file marquesina.h
+ * @authors Cadena Jeremy - Tipan Dylan 
+ * @brief Clase Marquesina
+ * @version 0.2
+ * @date 2022-06-9
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #pragma once
 #include <thread>
 #include <chrono>
@@ -18,10 +29,18 @@ class Marquesina {
 	}
 	
 	public:
+	/**
+	 * @brief Construye un nuevo objeto de Marquesina
+	 * @param texto Cadena string 
+	 */
 	Marquesina(std::string texto) {
 		cadena = std::thread(std::bind(&Marquesina::procesarHilo, this, texto));
 	}
 
+	/**
+	 * @brief procesarHilo Deteccion de mensaje ingresado
+	 * @param mensaje Cadena string
+	 */
 	void procesarHilo(std::string mensaje) {
 		HANDLE conhandler = GetStdHandle(STD_OUTPUT_HANDLE);
 		std::string texto(mensaje);
@@ -61,6 +80,10 @@ class Marquesina {
 		}
 	}
 
+	/**
+	 * @brief  Presenta en movimiento el mensaje previo ingresado
+	 * 
+	 */
 	void presentar() {
 		cadena.detach();
 	}
