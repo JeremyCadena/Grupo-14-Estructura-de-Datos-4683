@@ -1,7 +1,5 @@
 #include "ListaCircular.hpp"
-#include <iostream>
-#include <string.h>
-#include <fstream>
+
 using namespace std;
 
 int validarCadenas(char cadena[50]);
@@ -14,9 +12,9 @@ ListaCircular::ListaCircular(){
 
 void ListaCircular::agregar(){
     ofstream apArchivo;  
-    apArchivo.open("Registro.txt", ios::app);
+    apArchivo.open("C:/Users/jejoc/OneDrive/Escritorio/Jeremy  ESPE/Software/Semestre SI MAY-SEP22/1. Estructura de Datos/Trabajos en C++/Registro de vehiculos de una mecanica/Registro.txt", ios::app);
     if ( ! apArchivo ) {
-        cout << "\nProblema al abrir archivo --> Registro.txt" <<endl;
+        cout << "Problema al abrir archivo --> Registro.txt" <<endl;
         return;
     }
 
@@ -24,11 +22,11 @@ void ListaCircular::agregar(){
     int i=0;
     nuevo = new Vehiculo();
     if(nuevo==NULL){
-        cout<<"\n\t\t\tNO HAY MEMORIA SUFICIENTE"<<endl;
+        cout<<"\t\t\tNO HAY MEMORIA SUFICIENTE"<<endl;
 		return;
 	}
 
-    cout<<"\n\t\t\t|Registro del Vehiculo|"<<endl;
+    cout<<"\t\t\t|Registro del Vehiculo|"<<endl;
 	cout<<"\t\t\t-----------------------"<<endl;
 	cout<<endl;
 
@@ -64,11 +62,11 @@ void ListaCircular::agregar(){
 		raiz->siguiente->anterior=nuevo;
 		raiz->siguiente=nuevo;		
 	}
-	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
+	cout<<"\t\tRegistro de Vehiculo exitoso!"<<endl;
 
 	Vehiculo *copia=raiz;	
 	// Imprimir la lista
-	apArchivo << "\n\t\t\t----------------------------" << endl;
+	apArchivo << "\t\t\t----------------------------" << endl;
 	apArchivo << "\t\t\t|     Lista de Registros    |" << endl;
 	apArchivo << "\t\t\t----------------------------" << endl;
 	do {
@@ -98,7 +96,7 @@ void ListaCircular::consultarPrimero(){
 		return;
 	}
 
-    cout << "\n\t\t\t--------------------------" << endl;
+    cout << "\t\t\t--------------------------" << endl;
 	cout << "\t\t\t|      Registros         |" << endl;
 	cout << "\t\t\t--------------------------" << endl;
 
@@ -121,7 +119,7 @@ void ListaCircular::consultarUltimo(){
 		return;
 	}
 
-    cout << "\n\t\t\t--------------------------" << endl;
+    cout << "\t\t\t--------------------------" << endl;
 	cout << "\t\t\t|      Registros         |" << endl;
 	cout << "\t\t\t--------------------------" << endl;
 
@@ -146,7 +144,7 @@ void ListaCircular::borrar(){
 	}
 
     if ( raiz == raiz->siguiente) {
-	cout << "\n\t\t\t------------------------------" << endl;
+	cout << "\t\t\t------------------------------" << endl;
 	cout << "\t\t\t|   Eliminacion de registro   |" << endl;
 	cout << "\t\t\t------------------------------" << endl;
 	cout<<"\n\n";	
@@ -165,6 +163,33 @@ void ListaCircular::borrar(){
 	  }
 	  return;
 	}
+
+	do
+	{
+		cout << "\t\t\t------------------------------" << endl;
+		cout << "\t\t\t|   Eliminacion de registro   |" << endl;
+		cout << "\t\t\t------------------------------" << endl;
+		cout<<"\n\n";	
+		
+		cout<<"\t\t|Marca: "<<eliminar->marca<<endl;
+		cout<<"\t\t|Placa Vehicular: "<<eliminar->placaVehicular<<endl;
+		cout<<"\t\t|Propietario: "<<eliminar->nombrePropietario<<endl;
+		cout<<"\t\t------------------------------" << endl;
+		cout<<"\t\tSeguro que desea eliminar? (S/s): "; cin >> resp;
+		if ( resp=='S' || resp=='s') {
+         while ( raiz->siguiente != eliminar ) {		 
+              raiz=raiz->siguiente;
+         }
+         raiz->siguiente = raiz->siguiente->siguiente;
+         raiz->siguiente->siguiente->anterior = raiz;
+         free(eliminar);
+         cout <<"\t\tREGISTRO ELIMINADO" << endl;
+         return;
+	  } 
+	  eliminar=eliminar->siguiente;			
+	} while (raiz != eliminar);
+	cout << "\t\tSe mostraron todos los registros..." << endl;
+	return;		
 }
 
 void ListaCircular::buscar(){
@@ -176,9 +201,8 @@ void ListaCircular::buscar(){
 		return;
 	}
 
-    cout << "\t\t\t----------------------------" << endl;
-	cout << "\t\t\t|   Busqueda de Vehiculos   |" << endl;
-	cout << "\t\t\t----------------------------" << endl;
+    cout << "\t\t\t|   Busqueda de Vehiculos   |" << endl;
+	cout << "\t\t\t-----------------------------" << endl;
 	cout<<"\n\n";
 		
 	cout<<"\t\t-----------------------------" << endl;
@@ -201,7 +225,7 @@ void ListaCircular::buscar(){
 			char marca[12];
 			char resp; 
 			do{
-                cout << "\n\t\t\t--------------------------" << endl;
+                cout << "\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tMarca: ";
@@ -228,7 +252,7 @@ void ListaCircular::buscar(){
 		case 2:	
 			char placaVehicular[10];
 			do{
-				cout << "\n\t\t\t--------------------------" << endl;
+				cout << "\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tPlaca vehicular: ";
@@ -253,7 +277,7 @@ void ListaCircular::buscar(){
 		case 3:	
 			char nombrePropietario[40];
 			do{
-				cout << "\n\t\t\t--------------------------" << endl;
+				cout << "\t\t\t--------------------------" << endl;
 				cout << "\t\t\t|        Registro         |" << endl;
 				cout << "\t\t\t--------------------------" << endl;
 				cout<<"\t\tPropietario: ";
@@ -276,8 +300,7 @@ void ListaCircular::buscar(){
 			return;
 			break;	
             default:
-			cout<<"\t\tOpcion no valida"<<endl;
-						
+				cout<<"\t\tOpcion no valida"<<endl;
 		}
 }
 
@@ -298,16 +321,16 @@ int validarNum(char numero[10]){
 
 int validarCadenas(char cadena[50]){
 	int i=0, validandoL=0, j;
-	j=strlen(cadena); //se asigna el numero de caracteres que tiene la cadena a J
+	j=strlen(cadena); 
 	
 	while(i<j&&validandoL==0){
 	
-		if(isalpha(cadena[i])!=0||cadena[i]==32) // 32 para que acepte espacios tambien 
+		if(isalpha(cadena[i])!=0||cadena[i]==32) 
 		{
-			i++; //si es una letra avanza de lo contrario entra al else para salirse del ciclo
+			i++; 
 		}else{
 			validandoL=1;
 		}	
 	}	
- return validandoL;
+ 	return validandoL;
 }

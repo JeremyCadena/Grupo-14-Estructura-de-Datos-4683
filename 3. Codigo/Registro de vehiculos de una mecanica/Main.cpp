@@ -49,7 +49,7 @@ void menu(){
 	
 	int sw=0,validandoL;
 	int convertir;
-	char opcion[2]; // lo declaro como char para hacer la validacion de que solo ingrese numeros usando strlen
+	char opcion[2]; // validacion de solo numeros
     ListaCircular lst;
 								
 	do{
