@@ -1,3 +1,13 @@
+/**
+ * @file ListaCircular.cpp
+ * @authors cadena Jeremy - Tipan Dylan
+ * @brief Funciones de la ListaCircular
+ * @version 1.0
+ * @date 2022-06-10
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "ListaCircular.hpp"
 using namespace std;
 
