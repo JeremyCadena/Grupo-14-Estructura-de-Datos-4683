@@ -10,22 +10,13 @@ ListaCircular::ListaCircular(){
 }
 
 void ListaCircular::agregar(){
-    ofstream apArchivo; //Registro primero ultimo
-    ofstream upArchivo; //Registro ultimo primero
-    ifstream inArchivo;
+    ofstream apArchivo;  
     apArchivo.open("Registro.txt", ios::app);
-    upArchivo.open("RegistroInverso.txt", ios::trunc);
-    inArchivo.open("Registro.txt", ios::in);
     if ( ! apArchivo ) {
         cout << "\nProblema al abrir archivo --> Registro.txt" <<endl;
-        system("pause");
         return;
     }
-    if ( ! upArchivo ) {
-        cout << "\nProblema al abrir archivo --> RegistroInverso.txt" <<endl;
-        system("pause");
-        return;
-    }
+
     Vehiculo *nuevo;
     int i=0;
     nuevo = new Vehiculo();
@@ -71,48 +62,22 @@ void ListaCircular::agregar(){
 		raiz->siguiente=nuevo;		
 	}
 	cout<<"\n\t\tRegistro de Vehiculo exitoso!"<<endl;
-	
-	Vehiculo *copia = raiz;
-	Vehiculo *aux = copia;
-	copia=copia->anterior;
-	//Guardar la lista en el txt////////////////
-	string linea;
-	string vacio;//buscar si el txt esta vacio
+
+	Vehiculo *copia=raiz;	
 	// Imprimir la lista
-	while(!inArchivo.eof()){
-		getline(inArchivo,linea);
-		vacio=vacio+linea;
-	}
-	if(vacio.size()==0){
-		apArchivo << "\n\t\t\t----------------------------" << endl;
-		apArchivo << "\t\t\t|     Lista de Registros    |" << endl;
-		apArchivo << "\t\t\t----------------------------" << endl;
+	apArchivo << "\n\t\t\t----------------------------" << endl;
+	apArchivo << "\t\t\t|     Lista de Registros    |" << endl;
+	apArchivo << "\t\t\t----------------------------" << endl;
+	do {
 		apArchivo<<endl;	
 		apArchivo<<"\t\t--------------------------------------------"<<endl;
-	}
-		apArchivo<<"\t\tMarca: "<<nuevo->marca<<endl;
-		apArchivo<<"\t\tPlaca Vehicular: "<<nuevo->placaVehicular<<endl;
-		apArchivo<<"\t\tPropietario: "<<nuevo->nombrePropietario<<endl;
+		apArchivo<<"\t\tMarca: "<<copia->marca<<endl;
+		apArchivo<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
+		apArchivo<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
 		apArchivo<<endl;
-		apArchivo<<"\t\t--------------------------------------------"<<endl;
-		
-		
-		do {
-		upArchivo << "\n\t\t\t--------------------------------------" << endl;
-		upArchivo << "\t\t\t|     Lista de Registros Inversa    |" << endl;
-		upArchivo << "\t\t\t--------------------------------------" << endl;
-		upArchivo<<endl;	
-        upArchivo<<"\t\t--------------------------------------------"<<endl;
-        upArchivo<<"\t\tMarca: "<<copia->marca<<endl;
-        upArchivo<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
-        upArchivo<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
-        upArchivo<<endl;
-        copia=copia->anterior;
-	} while( copia != aux);
-		
-	apArchivo.close();
-	upArchivo.close();
-	inArchivo.close();
+		copia=copia->siguiente;
+
+	}while( copia != raiz);
 	return;
 }
 
@@ -124,26 +89,28 @@ bool ListaCircular::vacia(){
 }
 
 void ListaCircular::consultarPrimero(){
-	ifstream inArchivo;
-	inArchivo.open("Registro.txt", ios::in);
-    string linea;
-	string vacio;
-	string copiar;
-	while(!inArchivo.eof()){
-		getline(inArchivo,linea);
-		vacio=vacio+linea;
-		copiar=copiar+linea+"\n";
+    Vehiculo *copia = raiz;
+    if ( copia == NULL ) {
+		cout << "\n\t\tNo hay registros disponibles" << endl;
+		system("pause");
+		return;
 	}
-    	if(vacio.size()!=0){
-    		cout << copiar;
-    		system("pause");
-			return;
-		}
-		else{
-			cout << "\n\t\tNo hay registros disponibles" << endl;
-			system("pause");
-			return;
-		}
+
+    cout << "\n\t\t\t--------------------------" << endl;
+	cout << "\t\t\t|      Registros         |" << endl;
+	cout << "\t\t\t--------------------------" << endl;
+
+	do {
+        cout<<endl;	
+        cout<<"\t\t--------------------------------------------"<<endl;
+        cout<<"\t\tMarca: "<<copia->marca<<endl;
+        cout<<"\t\tPlaca Vehicular: "<<copia->placaVehicular<<endl;
+        cout<<"\t\tPropietario: "<<copia->nombrePropietario<<endl;
+        cout<<endl;
+        copia=copia->siguiente;
+	} while( copia != raiz);
+	system("pause");
+    return;
 }
 
 void ListaCircular::consultarUltimo(){
