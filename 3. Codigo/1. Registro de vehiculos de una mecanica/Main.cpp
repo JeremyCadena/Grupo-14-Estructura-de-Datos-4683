@@ -8,11 +8,11 @@
  * @copyright Copyright (c) 2022
  * 
  */
+#define USER "admin"
+#define PASS "******"
 #include<stdlib.h>
 #include "ListaCircular.cpp"
 #include "Marquesina.h"
-#define USER "admin"
-#define PASS "******"
 
 using namespace std;
 void menu();

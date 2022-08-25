@@ -4,7 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{849894C1-15D7-4244-86BD-F7989AC7F939}" Name="UML Class Diagram_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Class Diagram-Registro de vehiculos.oom"/>
+		<Model Expanded="Yes" ID="{849894C1-15D7-4244-86BD-F7989AC7F939}" Loaded="No" Name="UML Class Diagram_1" Type="{18112060-1A4B-11D1-83D9-444553540000}" URL="Class Diagram-Registro de vehiculos.oom"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

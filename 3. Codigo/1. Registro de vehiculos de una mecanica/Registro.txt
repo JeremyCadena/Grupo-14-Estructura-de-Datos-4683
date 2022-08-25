@@ -14,3 +14,13 @@
 		Propietario: Jeremy Cadena
 
 		--------------------------------------------
+		Marca: Ford
+		Placa Vehicular: GHB7894
+		Propietario: Juan Perez
+
+		--------------------------------------------
+		Marca: Lamborghini
+		Placa Vehicular: PCF7679
+		Propietario: Pedro Sanchez
+
+		--------------------------------------------
