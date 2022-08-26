@@ -1,0 +1,3 @@
+﻿  Source.cpp
+C:\Users\Dylan\Desktop\Cosas U\IV Semestre\Estructura de Datos\TetrisProyecto\TetrisProyecto\Source.cpp(108,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  TetrisProyecto.vcxproj -> C:\Users\Dylan\Desktop\Cosas U\IV Semestre\Estructura de Datos\TetrisProyecto\x64\Debug\TetrisProyecto.exe
