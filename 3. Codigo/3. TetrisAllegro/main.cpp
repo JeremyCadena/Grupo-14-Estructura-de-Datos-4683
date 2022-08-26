@@ -43,7 +43,6 @@ NRC:4683
 #include "Tetris.h"
 #include "Marquesina.h"
 #include "menuInteractivo.cpp"
-#include "EasyBMP.cpp"
 #define USER "admin"
 #define PASS "******"
 
@@ -115,7 +114,7 @@ int main() {
 	}
 	return 0;
 }
-END_OF_MAIN()
+END_OF_MAIN();
 
 void init() {
 	int depth, res;
@@ -312,7 +311,9 @@ void tetris(){
 			rest(5);
 		}
 	}
+	destroy_bitmap(buffer);
 	deinit();
+	allegro_exit();
 }
 
 void menu() {
