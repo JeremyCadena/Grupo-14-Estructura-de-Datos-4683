@@ -15,7 +15,7 @@ DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 OutputBaseFilename=tetrissetup
-Password=764-445-128-096-528; 333-550-360-784-012; 189-733-665-942-061; 387-517-872-654-703; 504-851-499-708-276
+Password=764-445-128-096-528
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
