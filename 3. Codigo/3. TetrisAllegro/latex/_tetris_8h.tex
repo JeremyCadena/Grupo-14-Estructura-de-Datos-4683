@@ -1,0 +1,95 @@
+\hypertarget{_tetris_8h}{}\doxysection{Tetris.\+h File Reference}
+\label{_tetris_8h}\index{Tetris.h@{Tetris.h}}
+
+
+Clase que simula el videojuego tetris.  
+
+
+{\ttfamily \#include $<$allegro.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_bloque}{Bloque}}
+\item 
+class \mbox{\hyperlink{class_pieza}{Pieza}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_tetris_8h_af975c6ac64d5ba32bafe8761a9181e42}\label{_tetris_8h_af975c6ac64d5ba32bafe8761a9181e42}} 
+\#define {\bfseries ANCHO}~1280
+\item 
+\mbox{\Hypertarget{_tetris_8h_ac89ba143bd10571d3d5f4597496205e2}\label{_tetris_8h_ac89ba143bd10571d3d5f4597496205e2}} 
+\#define {\bfseries ALTO}~720
+\item 
+\mbox{\Hypertarget{_tetris_8h_a8b63e6b7c379ace6f7e0d75ca3a9cdf8}\label{_tetris_8h_a8b63e6b7c379ace6f7e0d75ca3a9cdf8}} 
+\#define {\bfseries TAMBLOQUE}~25
+\item 
+\mbox{\Hypertarget{_tetris_8h_a4ca540fc18bcaf0dc006ecd979d1c5cf}\label{_tetris_8h_a4ca540fc18bcaf0dc006ecd979d1c5cf}} 
+\#define {\bfseries NARANJA}~0
+\item 
+\mbox{\Hypertarget{_tetris_8h_a417a0e2cb13684627c838b16cc69651a}\label{_tetris_8h_a417a0e2cb13684627c838b16cc69651a}} 
+\#define {\bfseries AZUL}~1
+\item 
+\mbox{\Hypertarget{_tetris_8h_a0db3023c032af682156c9e8f7dc143a7}\label{_tetris_8h_a0db3023c032af682156c9e8f7dc143a7}} 
+\#define {\bfseries MORADO}~2
+\item 
+\mbox{\Hypertarget{_tetris_8h_a66761d5509ed1ddc7e5586e4d28247a1}\label{_tetris_8h_a66761d5509ed1ddc7e5586e4d28247a1}} 
+\#define {\bfseries ROJO}~3
+\item 
+\mbox{\Hypertarget{_tetris_8h_a706dd8cf719e6640421418eea1b08c21}\label{_tetris_8h_a706dd8cf719e6640421418eea1b08c21}} 
+\#define {\bfseries AMARILLO}~4
+\item 
+\mbox{\Hypertarget{_tetris_8h_a4bb7219220248476df702f5d4fbbb3ab}\label{_tetris_8h_a4bb7219220248476df702f5d4fbbb3ab}} 
+\#define {\bfseries VERDE}~5
+\item 
+\mbox{\Hypertarget{_tetris_8h_a1291f416b069313021b519eea62d5bf1}\label{_tetris_8h_a1291f416b069313021b519eea62d5bf1}} 
+\#define {\bfseries NORMAL}~0
+\item 
+\mbox{\Hypertarget{_tetris_8h_ac1392264c0241146778fc6b2edb90c3e}\label{_tetris_8h_ac1392264c0241146778fc6b2edb90c3e}} 
+\#define {\bfseries SMEDIO}~1
+\item 
+\mbox{\Hypertarget{_tetris_8h_a09b2b2cab423a17d4c9037bfa9a00a78}\label{_tetris_8h_a09b2b2cab423a17d4c9037bfa9a00a78}} 
+\#define {\bfseries SOMBRA}~2
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_tetris_8h_a1dc553ee55b85c2bb910aa5bc58bb3a5}\label{_tetris_8h_a1dc553ee55b85c2bb910aa5bc58bb3a5}} 
+void {\bfseries mostrar\+\_\+muros} (BITMAP $\ast$, BITMAP $\ast$, BITMAP $\ast$)
+\item 
+\mbox{\Hypertarget{_tetris_8h_aebf5e0600c84a8ff2d667d4c009af26c}\label{_tetris_8h_aebf5e0600c84a8ff2d667d4c009af26c}} 
+void {\bfseries mostrar\+\_\+numero} (BITMAP $\ast$, BITMAP $\ast$, int, int, int)
+\item 
+\mbox{\Hypertarget{_tetris_8h_aea0c0c4b894e1e85a31a1a8b8e34a2af}\label{_tetris_8h_aea0c0c4b894e1e85a31a1a8b8e34a2af}} 
+void {\bfseries mostrar\+\_\+puntos} (BITMAP $\ast$, BITMAP $\ast$, BITMAP $\ast$, int, int)
+\item 
+\mbox{\Hypertarget{_tetris_8h_afb0f642628b465359c8b55a2b8d94c64}\label{_tetris_8h_afb0f642628b465359c8b55a2b8d94c64}} 
+void {\bfseries mostrar\+\_\+bloque} (BITMAP $\ast$, BITMAP $\ast$, int, int, int, int)
+\item 
+\mbox{\Hypertarget{_tetris_8h_a949804adf865fac4c8b92a2ab1e19fa5}\label{_tetris_8h_a949804adf865fac4c8b92a2ab1e19fa5}} 
+void {\bfseries limpiar\+\_\+mapa} ()
+\item 
+\mbox{\Hypertarget{_tetris_8h_a4f70ce5be4800d0849e55f3e79d79f56}\label{_tetris_8h_a4f70ce5be4800d0849e55f3e79d79f56}} 
+void {\bfseries mostrar\+\_\+mapa} (BITMAP $\ast$, BITMAP $\ast$)
+\item 
+\mbox{\Hypertarget{_tetris_8h_ae693ab41bead60243947ac40f52693ee}\label{_tetris_8h_ae693ab41bead60243947ac40f52693ee}} 
+void {\bfseries eliminar\+\_\+fila} (int fila)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clase que simula el videojuego tetris. 
+
+\begin{DoxyAuthor}{Author}
+CADENA JEREMY -\/ GUERRA LUCIANA -\/ TIPAN DYLAN 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/07-\/20
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}

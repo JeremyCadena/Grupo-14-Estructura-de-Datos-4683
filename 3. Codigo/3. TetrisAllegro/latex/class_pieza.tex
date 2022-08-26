@@ -1,0 +1,145 @@
+\hypertarget{class_pieza}{}\doxysection{Pieza Class Reference}
+\label{class_pieza}\index{Pieza@{Pieza}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_pieza_a323f9681946c5ab6b7e689ccace1c823}\label{class_pieza_a323f9681946c5ab6b7e689ccace1c823}} 
+{\bfseries Pieza} (\mbox{\hyperlink{struct_bloque}{Bloque}} \+\_\+b\+\_\+prin, \mbox{\hyperlink{struct_bloque}{Bloque}} \+\_\+bls\mbox{[}3\mbox{]}, int \+\_\+color\+\_\+p)
+\item 
+void \mbox{\hyperlink{class_pieza_abc260e3738f0bd6c5175d787f5afdc0a}{mostrar\+\_\+pieza}} (BITMAP $\ast$buffer, BITMAP $\ast$img\+\_\+b)
+\begin{DoxyCompactList}\small\item\em Funcion que maneja las piezas del tetris. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pieza_af5b1ad66dbdf2c3179bb273a025b61c5}{incrX}} (int incr)
+\begin{DoxyCompactList}\small\item\em Mueve la pieza de tetris de manera horizontal (eje x) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pieza_ac056bdca334650a3ed19c7c9d14c6208}{incry}} (int incr)
+\begin{DoxyCompactList}\small\item\em Mueve la pieza de tetris de manera vertical (eje y) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pieza_a1fcd482e71f6da9a5b3ae1d2c7f173c5}{colision\+\_\+abajo}} ()
+\begin{DoxyCompactList}\small\item\em Regresa un True choca contra la parede inferior o false si no. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pieza_aea381451454299bb382f0a2be19ed494}{colision\+\_\+derecha}} ()
+\begin{DoxyCompactList}\small\item\em Regresa un True choca contra la parede lateral derecha o false si no. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pieza_a94f7a47a2099c1319910f8cc8455297b}{colision\+\_\+izquierda}} ()
+\begin{DoxyCompactList}\small\item\em Regresa un True choca contra la parede lateral izquierda o false si no. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_pieza_ad62c913606d60f6c1b3039589f8284fa}\label{class_pieza_ad62c913606d60f6c1b3039589f8284fa}} 
+bool {\bfseries fila\+\_\+llena} (int fila)
+\item 
+\mbox{\Hypertarget{class_pieza_a3ece7bbd9cce7aa31d97415ceae2ac50}\label{class_pieza_a3ece7bbd9cce7aa31d97415ceae2ac50}} 
+void {\bfseries insertar\+\_\+mapa} ()
+\item 
+\mbox{\Hypertarget{class_pieza_a6433572f67ac9d5f2aafa63d9280243d}\label{class_pieza_a6433572f67ac9d5f2aafa63d9280243d}} 
+void {\bfseries set\+BPrin} (\mbox{\hyperlink{struct_bloque}{Bloque}} new\+B\+\_\+prin)
+\item 
+\mbox{\Hypertarget{class_pieza_ab1e86b1b334a4d97cb9f48b4866e31c1}\label{class_pieza_ab1e86b1b334a4d97cb9f48b4866e31c1}} 
+void {\bfseries set\+Bls} (\mbox{\hyperlink{struct_bloque}{Bloque}} new\+Bls\mbox{[}3\mbox{]})
+\item 
+\mbox{\Hypertarget{class_pieza_ab9b06c65035767151b652f3c1f1241f6}\label{class_pieza_ab9b06c65035767151b652f3c1f1241f6}} 
+void {\bfseries set\+Color} (int new\+Color)
+\item 
+\mbox{\Hypertarget{class_pieza_ab9aae599370eaf844af6b414dc28136c}\label{class_pieza_ab9aae599370eaf844af6b414dc28136c}} 
+void {\bfseries rotar} ()
+\item 
+\mbox{\Hypertarget{class_pieza_adae431465d7f2d23d1beeaa1c766caf4}\label{class_pieza_adae431465d7f2d23d1beeaa1c766caf4}} 
+int {\bfseries getY} ()
+\item 
+\mbox{\Hypertarget{class_pieza_af427882b54dd599dc3dd17ec2a9ed525}\label{class_pieza_af427882b54dd599dc3dd17ec2a9ed525}} 
+int {\bfseries getX} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_pieza_a1fcd482e71f6da9a5b3ae1d2c7f173c5}\label{class_pieza_a1fcd482e71f6da9a5b3ae1d2c7f173c5}} 
+\index{Pieza@{Pieza}!colision\_abajo@{colision\_abajo}}
+\index{colision\_abajo@{colision\_abajo}!Pieza@{Pieza}}
+\doxysubsubsection{\texorpdfstring{colision\_abajo()}{colision\_abajo()}}
+{\footnotesize\ttfamily bool Pieza\+::colision\+\_\+abajo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Regresa un True choca contra la parede inferior o false si no. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pieza_aea381451454299bb382f0a2be19ed494}\label{class_pieza_aea381451454299bb382f0a2be19ed494}} 
+\index{Pieza@{Pieza}!colision\_derecha@{colision\_derecha}}
+\index{colision\_derecha@{colision\_derecha}!Pieza@{Pieza}}
+\doxysubsubsection{\texorpdfstring{colision\_derecha()}{colision\_derecha()}}
+{\footnotesize\ttfamily bool Pieza\+::colision\+\_\+derecha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Regresa un True choca contra la parede lateral derecha o false si no. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pieza_a94f7a47a2099c1319910f8cc8455297b}\label{class_pieza_a94f7a47a2099c1319910f8cc8455297b}} 
+\index{Pieza@{Pieza}!colision\_izquierda@{colision\_izquierda}}
+\index{colision\_izquierda@{colision\_izquierda}!Pieza@{Pieza}}
+\doxysubsubsection{\texorpdfstring{colision\_izquierda()}{colision\_izquierda()}}
+{\footnotesize\ttfamily bool Pieza\+::colision\+\_\+izquierda (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Regresa un True choca contra la parede lateral izquierda o false si no. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_pieza_af5b1ad66dbdf2c3179bb273a025b61c5}\label{class_pieza_af5b1ad66dbdf2c3179bb273a025b61c5}} 
+\index{Pieza@{Pieza}!incrX@{incrX}}
+\index{incrX@{incrX}!Pieza@{Pieza}}
+\doxysubsubsection{\texorpdfstring{incrX()}{incrX()}}
+{\footnotesize\ttfamily void Pieza\+::incrX (\begin{DoxyParamCaption}\item[{int}]{incr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mueve la pieza de tetris de manera horizontal (eje x) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em incr} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pieza_ac056bdca334650a3ed19c7c9d14c6208}\label{class_pieza_ac056bdca334650a3ed19c7c9d14c6208}} 
+\index{Pieza@{Pieza}!incry@{incry}}
+\index{incry@{incry}!Pieza@{Pieza}}
+\doxysubsubsection{\texorpdfstring{incry()}{incry()}}
+{\footnotesize\ttfamily void Pieza\+::incry (\begin{DoxyParamCaption}\item[{int}]{incr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Mueve la pieza de tetris de manera vertical (eje y) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em incr} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_pieza_abc260e3738f0bd6c5175d787f5afdc0a}\label{class_pieza_abc260e3738f0bd6c5175d787f5afdc0a}} 
+\index{Pieza@{Pieza}!mostrar\_pieza@{mostrar\_pieza}}
+\index{mostrar\_pieza@{mostrar\_pieza}!Pieza@{Pieza}}
+\doxysubsubsection{\texorpdfstring{mostrar\_pieza()}{mostrar\_pieza()}}
+{\footnotesize\ttfamily void Pieza\+::mostrar\+\_\+pieza (\begin{DoxyParamCaption}\item[{BITMAP $\ast$}]{buffer,  }\item[{BITMAP $\ast$}]{img\+\_\+b }\end{DoxyParamCaption})}
+
+
+
+Funcion que maneja las piezas del tetris. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em $\ast$buffer} & \\
+\hline
+{\em $\ast$img\+\_\+b} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_tetris_8h}{Tetris.\+h}}\item 
+Tetris.\+cpp\end{DoxyCompactItemize}

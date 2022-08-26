@@ -1,0 +1,63 @@
+\hypertarget{_tetris_8h_source}{}\doxysection{Tetris.\+h}
+\mbox{\hyperlink{_tetris_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <allegro.h>}}
+\DoxyCodeLine{13 \textcolor{comment}{//TAMAÑO DE CONSOLA}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#define ANCHO       1280}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#define ALTO        720}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define TAMBLOQUE   25}}
+\DoxyCodeLine{17 \textcolor{comment}{//COLORES}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#define NARANJA     0}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#define AZUL        1}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#define MORADO      2}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#define ROJO        3}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#define AMARILLO    4}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#define VERDE       5}}
+\DoxyCodeLine{24 \textcolor{comment}{//TIPO DE BLOQUE}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#define NORMAL  0}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define SMEDIO  1}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define SOMBRA  2}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} mostrar\_muros(BITMAP*, BITMAP*, BITMAP*);}
+\DoxyCodeLine{30 \textcolor{keywordtype}{void} mostrar\_numero(BITMAP*, BITMAP*, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{31 \textcolor{keywordtype}{void} mostrar\_puntos(BITMAP*, BITMAP*, BITMAP*, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} mostrar\_bloque(BITMAP*, BITMAP*, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{33 \textcolor{keywordtype}{void} limpiar\_mapa();}
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} mostrar\_mapa(BITMAP*, BITMAP*);}
+\DoxyCodeLine{35 \textcolor{keywordtype}{void} eliminar\_fila(\textcolor{keywordtype}{int} fila);}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_bloque}{Bloque}}\{}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} x, y, tipo;}
+\DoxyCodeLine{39 \};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{class }\mbox{\hyperlink{class_pieza}{Pieza}}\{}
+\DoxyCodeLine{42     \textcolor{keyword}{private}:}
+\DoxyCodeLine{43         \mbox{\hyperlink{struct_bloque}{Bloque}} b\_prin;    \textcolor{comment}{//Bloque ancla}}
+\DoxyCodeLine{44         \mbox{\hyperlink{struct_bloque}{Bloque}} bls[3];    \textcolor{comment}{//Bloques secundarios}}
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} color\_p;}
+\DoxyCodeLine{46     \textcolor{keyword}{public}:}
+\DoxyCodeLine{47         \mbox{\hyperlink{class_pieza}{Pieza}}(\mbox{\hyperlink{struct_bloque}{Bloque}} \_b\_prin, \mbox{\hyperlink{struct_bloque}{Bloque}} \_bls[3], \textcolor{keywordtype}{int} \_color\_p);}
+\DoxyCodeLine{48         }
+\DoxyCodeLine{55         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pieza_abc260e3738f0bd6c5175d787f5afdc0a}{mostrar\_pieza}}(BITMAP *buffer, BITMAP *img\_b);}
+\DoxyCodeLine{56         }
+\DoxyCodeLine{62         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pieza_af5b1ad66dbdf2c3179bb273a025b61c5}{incrX}}(\textcolor{keywordtype}{int} incr)\{ b\_prin.x += incr; \}}
+\DoxyCodeLine{63         }
+\DoxyCodeLine{69         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_pieza_ac056bdca334650a3ed19c7c9d14c6208}{incry}}(\textcolor{keywordtype}{int} incr)\{ b\_prin.y += incr; \}}
+\DoxyCodeLine{70         }
+\DoxyCodeLine{77         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pieza_a1fcd482e71f6da9a5b3ae1d2c7f173c5}{colision\_abajo}}();}
+\DoxyCodeLine{78         }
+\DoxyCodeLine{85         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pieza_aea381451454299bb382f0a2be19ed494}{colision\_derecha}}();}
+\DoxyCodeLine{86         }
+\DoxyCodeLine{93         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_pieza_a94f7a47a2099c1319910f8cc8455297b}{colision\_izquierda}}();}
+\DoxyCodeLine{94         \textcolor{keywordtype}{bool} fila\_llena(\textcolor{keywordtype}{int} fila);}
+\DoxyCodeLine{95         \textcolor{keywordtype}{void} insertar\_mapa();}
+\DoxyCodeLine{96         \textcolor{keywordtype}{void} setBPrin(\mbox{\hyperlink{struct_bloque}{Bloque}} newB\_prin)\{ b\_prin = newB\_prin;\}}
+\DoxyCodeLine{97         \textcolor{keywordtype}{void} setBls(\mbox{\hyperlink{struct_bloque}{Bloque}} newBls[3])\{ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<3; i++) bls[i] = newBls[i];\}}
+\DoxyCodeLine{98         \textcolor{keywordtype}{void} setColor(\textcolor{keywordtype}{int} newColor)\{ color\_p = newColor;\}}
+\DoxyCodeLine{99         \textcolor{keywordtype}{void} rotar();}
+\DoxyCodeLine{100         \textcolor{keywordtype}{int} getY()\{ \textcolor{keywordflow}{return} b\_prin.y;\}}
+\DoxyCodeLine{101         \textcolor{keywordtype}{int} getX()\{ \textcolor{keywordflow}{return} b\_prin.x;\}}
+\DoxyCodeLine{102 \};}
+
+\end{DoxyCode}
