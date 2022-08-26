@@ -80,6 +80,10 @@ bool Pieza::fila_llena(int fila){
 	return true;
 }
 
+void mostrar_fondo(BITMAP *buffer, BITMAP *fondo){
+	blit(fondo, buffer, 0, 0, -1000, -200, 1280, 720);
+}
+
 void mostrar_muros(BITMAP *buffer, BITMAP *muroH, BITMAP *muroV){
 	blit(muroV, buffer, 0, 0, 0, 0, 25, 500);
 	blit(muroV, buffer, 0, 0, 275, 0, 25, 500);
@@ -112,8 +116,8 @@ void mostrar_numero(BITMAP *buffer, BITMAP *img_num, int numero, int xnum, int y
 }
 
 void mostrar_puntos(BITMAP* buffer, BITMAP* img_texto, BITMAP* img_num, int puntos, int nivel){
-	blit (img_texto, buffer, 0, 0, 320, 50, 146, 34);
-	blit (img_texto, buffer, 0, 34, 320, 210, 119, 34);
+	blit (img_texto, buffer, 0, 0, 320, 50, 146, 34);		//Pieza Siguiente
+	blit (img_texto, buffer, 0, 34, 320, 210, 119, 34);		//Puntaje
 	mostrar_numero (buffer, img_num, puntos, 430, 260);
 	blit(img_texto, buffer, 0, 68, 320, 340, 82, 34);
 	mostrar_numero (buffer, img_num, nivel, 430, 390);

@@ -26,6 +26,7 @@
 #define SMEDIO	1
 #define SOMBRA	2
 
+void mostrar_fondo(BITMAP*, BITMAP*);
 void mostrar_muros(BITMAP*, BITMAP*, BITMAP*);
 void mostrar_numero(BITMAP*, BITMAP*, int, int, int);
 void mostrar_puntos(BITMAP*, BITMAP*, BITMAP*, int, int);
@@ -46,6 +47,11 @@ class Pieza{
 	public:
 		Pieza(Bloque _b_prin, Bloque _bls[3], int _color_p);
 		
+		int getY(){ return b_prin.y;}
+		int getX(){ return b_prin.x;}
+		void setBPrin(Bloque newB_prin){ b_prin = newB_prin;}
+		void setBls(Bloque newBls[3]){ for(int i=0; i<3; i++) bls[i] = newBls[i];}
+		void setColor(int newColor){ color_p = newColor;}
 		/**
 		* @brief Funcion que maneja las piezas del tetris
 		*
@@ -92,11 +98,9 @@ class Pieza{
 		*/
 		bool colision_izquierda();
 		bool fila_llena(int fila);
+		
 		void insertar_mapa();
-		void setBPrin(Bloque newB_prin){ b_prin = newB_prin;}
-		void setBls(Bloque newBls[3]){ for(int i=0; i<3; i++) bls[i] = newBls[i];}
-		void setColor(int newColor){ color_p = newColor;}
 		void rotar();
-		int getY(){ return b_prin.y;}
-		int getX(){ return b_prin.x;}
+		
+	
 };
