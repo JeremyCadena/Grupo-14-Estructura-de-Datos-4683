@@ -318,7 +318,7 @@ void tetris(){
 
 void menu() {
 	const char *titulo[] = {"--------------------------------------","|        PROYECTO TETRIS        |","--------------------------------------"};
-	const char *opciones[]={"\tJugar Tetris", "\tPDF", "\tFoto Pixelada", "\tManual de ayuda", "\tSalida del sistema", "----------------------------------------"};
+	const char *opciones[]={"\tJugar Tetris", "\tManual de ayuda", "\tFoto Pixelada", "\tSalida del sistema", "----------------------------------------"};
 	int n = 5; // Numero de opciones
 	int m = 3; //Numero de lineas de titulo
 	int sw=0,validandoL;
@@ -332,12 +332,10 @@ void menu() {
 				tetris();
 				break;
 			case 2:
-				
+				system("start Manual_de_usuario.pdf");
 				break;	
 			case 3:
 			//	menuOpcionPixelar();
-				break;
-			case 4:
 				break;
 			case 5:
 				repite = false;
