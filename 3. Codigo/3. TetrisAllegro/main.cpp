@@ -1,5 +1,6 @@
 #include <allegro.h>
 #include <iostream>
+#include <time.h>
 #include "Tetris.h"
 
 void init();
@@ -42,9 +43,11 @@ void tetris(){
 	BITMAP *muroH = load_bitmap("Imagenes/muro_horizontal.bmp", NULL);
 	BITMAP *muroV = load_bitmap("Imagenes/muro_vertical.bmp", NULL);
 	BITMAP *img_b = load_bitmap("Imagenes/piezas.bmp", NULL);
+	BITMAP *elimn = load_bitmap("Imagenes/elimina_piezas.bmp", NULL);
 	
 	//INTEGERS
 	int vcaida = 7, aux = 0, pb = 0;
+	int random, fila, cfila, fin;
 	
 	//BOOLEANOS
 	bool colabajo = false;
@@ -60,12 +63,24 @@ void tetris(){
 	Bloque bL[3] = { { 0, -1, NORMAL}, { 0, 1, NORMAL}, { 1, 1, NORMAL} };
 	Bloque bS[3] = { { 1, -1, NORMAL}, { 0, -1, NORMAL}, { -1, 0, NORMAL} };
 	Bloque bZ[3] = { { 1, 1, NORMAL}, { 0, 1, NORMAL}, { -1, 0, NORMAL} };
+	
+	//GENERA LA PIEZA ALEATORIA
 	Pieza pAc(b_prin, bS, VERDE);
+	srand(time(NULL));
+	random = 1 + rand() % 7;
+	if(random == 1) pAc.setBls(bJ), pAc.setColor(AZUL);
+	else if(random == 2) pAc.setBls(bT), pAc.setColor(MORADO);
+	else if(random == 3) pAc.setBls(bO), pAc.setColor(AMARILLO);
+	else if(random == 4) pAc.setBls(bI), pAc.setColor(NARANJA);
+	else if(random == 5) pAc.setBls(bL), pAc.setColor(NARANJA);
+	else if(random == 6) pAc.setBls(bS), pAc.setColor(VERDE);
+	else if(random == 7) pAc.setBls(bZ), pAc.setColor(ROJO);
 	
 	limpiar_mapa();
 	while (!key[KEY_ESC]) {
 		clear_to_color(buffer, 0x000000);
 		mostrar_muros(buffer, muroH, muroV);
+		mostrar_mapa(buffer, img_b);
 		
 		if(pAc.colision_abajo())colabajo = true;
 		if(pAc.colision_derecha())colder = true;
@@ -77,9 +92,57 @@ void tetris(){
 			pAc.incry(1);
 		}
 		
+		//NUEVA PIEZA
+		if(colabajo){
+			pAc.insertar_mapa();
+			fila = pAc.getY() + 2;
+			while(fila > 19)
+				fila--;
+			fin = fila -4;
+			cfila = fila;
+			while (fila >= fin){
+				if(pAc.fila_llena(fila)){
+					for (int i=1; i<11; i++) blit(elimn, buffer, 0, 0, i*TAMBLOQUE, fila*TAMBLOQUE, 25, 25);
+					blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
+					for (int i=1; i<11; i++){
+						blit(elimn, buffer, 25, 0, i*TAMBLOQUE, fila*TAMBLOQUE, 25, 25);
+						blit(buffer, screen, 0, 0, 0, 0, ANCHO, ALTO);
+						blit(elimn, buffer, 50, 0, i*TAMBLOQUE, fila*TAMBLOQUE, 25, 25);
+						rest(8);
+					}
+				}
+				fila--;
+			}
+			fila = cfila;
+			while (fila >= fin){
+				if(pAc.fila_llena(fila)) eliminar_fila(fila);
+				else fila--;
+			}
+			b_prin.x = 5, b_prin.y = 2;
+			pAc.setBPrin(b_prin);
+			random = 1 + rand() % 7;
+			if(random == 1) pAc.setBls(bJ), pAc.setColor(AZUL);
+			else if(random == 2) pAc.setBls(bT), pAc.setColor(MORADO);
+			else if(random == 3) pAc.setBls(bO), pAc.setColor(AMARILLO);
+			else if(random == 4) pAc.setBls(bI), pAc.setColor(NARANJA);
+			else if(random == 5) pAc.setBls(bL), pAc.setColor(NARANJA);
+			else if(random == 6) pAc.setBls(bS), pAc.setColor(VERDE);
+			else if(random == 7) pAc.setBls(bZ), pAc.setColor(ROJO);
+			colabajo = false;
+			rest(100);
+		}
 		//DETECCION DE TECLAS
 		if (key[KEY_RIGHT] && !colder) pAc.incrX(1);
 		if (key[KEY_LEFT] && !colizq) pAc.incrX(-1);
+		if (key[KEY_UP]){
+			Pieza pAux= pAc;
+			pAc.rotar();
+			pAc.incrX(1);
+			if (pAc.colision_izquierda()) pAc = pAux;
+			pAc.incrX(-2);
+			if (pAc.colision_derecha()) pAc = pAux;
+			pAc.incrX(1);
+		}
 		if (key[KEY_DOWN]) vcaida = 0;
 		
 		if(++aux >= 7){

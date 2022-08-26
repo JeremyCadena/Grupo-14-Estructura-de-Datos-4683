@@ -54,6 +54,32 @@ bool Pieza::colision_izquierda(){
 	return false;
 }
 
+void Pieza::insertar_mapa(){
+	int xbls, ybls;
+	mapa[b_prin.y][b_prin.x] = (b_prin.tipo*10) + color_p;
+	for (int i=0; i<3; i++){
+		xbls = b_prin.x + bls[i].x;
+		ybls = b_prin.y + bls[i].y;
+		mapa[ybls][xbls] = (bls[i].tipo*10) + color_p;
+	}
+}
+
+void Pieza::rotar(){
+	int aux;
+	for(int i=0; i<3; i++){
+		aux = bls[i].x;
+		bls[i].x = bls[i].y;
+		bls[i].y = aux;
+		bls[i].x *= -1;
+	}
+}
+
+bool Pieza::fila_llena(int fila){
+	for (int i=1; i<11; i++)
+		if(mapa[fila][i] == 9) return false;
+	return true;
+}
+
 void mostrar_muros(BITMAP *buffer, BITMAP *muroH, BITMAP *muroV){
 	blit(muroV, buffer, 0, 0, 0, 0, 25, 500);
 	blit(muroV, buffer, 0, 0, 275, 0, 25, 500);
@@ -70,4 +96,23 @@ void limpiar_mapa(){
 }
 void mostrar_bloque(BITMAP *buffer, BITMAP *img_b, int xb, int yb, int color, int tipo){
 	blit(img_b, buffer, tipo*TAMBLOQUE, color*TAMBLOQUE, xb*TAMBLOQUE, yb*TAMBLOQUE, TAMBLOQUE, TAMBLOQUE);
+}
+
+void mostrar_mapa(BITMAP *buffer, BITMAP *img_b){
+	int t, c;
+	for(int i=0; i<20; i++){
+		for(int j=1; j<11; j++){
+			if (mapa[i][j] != 9){
+				t = mapa[i][j] / 10;
+				c = mapa[i][j] % 10;
+				mostrar_bloque(buffer, img_b, j, i, c, t);
+			}
+		}
+	}
+}
+
+void eliminar_fila(int fila){
+	for (int i=fila; i>0; i--)
+		for(int j=1; j<11; j++)
+			mapa[i][j] = mapa[i-1][j];
 }

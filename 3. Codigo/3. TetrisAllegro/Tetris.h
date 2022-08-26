@@ -18,6 +18,8 @@
 void mostrar_muros(BITMAP*, BITMAP*, BITMAP*);
 void mostrar_bloque(BITMAP*, BITMAP*, int, int, int, int);
 void limpiar_mapa();
+void mostrar_mapa(BITMAP*, BITMAP*);
+void eliminar_fila(int fila);
 
 struct Bloque{
 	int x, y, tipo;
@@ -36,4 +38,12 @@ class Pieza{
 		bool colision_abajo();
 		bool colision_derecha();
 		bool colision_izquierda();
+		bool fila_llena(int fila);
+		void insertar_mapa();
+		void setBPrin(Bloque newB_prin){ b_prin = newB_prin;}
+		void setBls(Bloque newBls[3]){ for(int i=0; i<3; i++) bls[i] = newBls[i];}
+		void setColor(int newColor){ color_p = newColor;}
+		void rotar();
+		int getY(){ return b_prin.y;}
+		int getX(){ return b_prin.x;}
 };
